@@ -1,0 +1,81 @@
+﻿<%
+	List<DanTocSoap> danTocs = service.getDanhSachDanToc();
+	List<QuocGiaSoap> listQuocgia = service.getDanhSachQuocGia();
+%>
+<tr>
+		<td colspan="2">
+			<label class="egov-label-bold">Dân tộc
+			</label> <label class="egov-label-red">*</label>
+			<br> <select name="danToc" id="danToc" class="egov-select"
+			onchange="setDanToc('quocTich','danToc' )">
+				<option>
+				Lựa chọn dân tộc
+				</option>
+				<%
+					for (DanTocSoap  item : danTocs) {
+			%>
+			<option value="<%=item.getId()%>"
+				<%=ActionUtils.checkData(item.getId(), hoSo.getDanToc())%>><%=item.getTen()%>
+		</option>
+			<%
+				}
+			%>
+		</select>
+		</td>
+
+		<td colspan="2">
+		<label class="egov-label-bold">Quốc tịch:</label>
+				<label class="egov-label-red">*</label><br>
+	<select name="idQuocTich" id="idQuocTich"
+			class="egov-select"
+			onchange="checkDanToc('quocTich','danToc');">
+				<option value="0">
+					Chọn quốc tịch
+				</option>
+				<%
+					for (QuocGiaSoap item : listQuocgia) {
+				%>
+				<option value="<%=item.getId()%>"
+					<%=ActionUtils.checkData(item.getId(), hoSo.getIdQuocTichNguoiNopDon())%>>
+					<%=item.getTen()%>
+				</option>
+				<%
+					}
+				%>
+		</select></td>
+	</tr>
+
+<script>
+var quocTichVN = 1;
+var danTocKinh = 1;
+var danTocNuocNgoai = 55;	
+
+function checkDanToc(idQuocTichCon,idDanTocCon ) {
+	var quocTich = document.getElementById(idQuocTichCon).value; 
+	if (quocTich == -1) {
+		return;
+	}
+	var danTocSelectBox = document.getElementById(idDanTocCon);
+	
+	if (quocTich != quocTichVN && quocTich != 0) {
+		danTocSelectBox.value = danTocNuocNgoai;
+	} else if (quocTich == quocTichVN ){
+		danTocSelectBox.value = danTocKinh;
+	}else{
+		danTocSelectBox.value = 0;
+	}
+}
+
+function setDanToc(idQuocTichCon,idDanTocCon ) {
+	var quocTich = document.getElementById(idQuocTichCon).value;
+	if (quocTich == -1) {
+		return;
+	}
+	var danTocSelectBox = document.getElementById(idDanTocCon);
+	
+	if(quocTich != quocTichVN && quocTich > 0){
+		danTocSelectBox.value = danTocNuocNgoai;
+	}
+}
+
+</script>

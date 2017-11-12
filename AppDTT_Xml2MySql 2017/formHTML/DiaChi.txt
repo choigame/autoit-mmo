@@ -1,0 +1,103 @@
+﻿	<tr>
+	<td colspan="6"><label class="egov-label-bold">Địa chỉ thường trú
+	</label></td>
+	</tr>
+	<tr>
+	<td colspan="2"><label class="egov-label-bold">Tỉnh/Thành phố</label>
+	<label class="egov-label-red">*</label>
+	<select name="tinh" id="tinh"
+	style="width: 96%" class="egov-select"
+	onchange="reDrawSelectBox('tinh','quan','xa')">
+	<%
+		long tinh = ActionUtils.getValueLong(request, "tinh");
+			if (tinh ==0 ){
+				tinh = hoSo.getTinh();
+			}
+			if (tinh ==0 ){
+				tinh = donViHanhChinhId;
+				}											
+			for (DonViHanhChinh item : danhSachTinhThanh) {
+	%>
+
+	<option value="<%=item.getId()%>"
+		<%=ActionUtils.checkData(item.getId(),
+				tinh)%>><%=item.getTen()%></option>
+	<%
+		}
+	%>
+	</select>
+	</td>
+
+	<td colspan="2"><label class="egov-label-bold">Quận/Huyện</label>
+	<label class="egov-label-red">*</label>
+	<select name="quan" id="quan"
+	style="width: 96%" class="egov-select"
+	onchange="reDrawSelectBox('quan','xa')">
+	<option value="-1">
+	Chọn quận huyện
+	</option>
+	<%
+		donViHanhChinhSoaps = service.getDanhsachDVHC(tinh);
+																																					
+			long quan= ActionUtils.getValueLong(request, "quan"); 
+				if (quan == 0)
+					quan = hoSo.getQuan();
+				for (DonViHanhChinhSoap item : donViHanhChinhSoaps) {
+	%>
+	<option value="<%=item.getId()%>"
+		<%=ActionUtils.checkData(item.getId(),
+					quan)%>><%=item.getTen()%></option>
+	<%
+		}
+	%>
+
+	</select></td>
+	<td colspan="2"><label class="egov-label-bold">Phường/Xã/Thị trấn</label>
+<label class="egov-label-red">*</label>
+		<select name="xa" id="xa"
+		style="width: 97%" class="egov-select">
+	<option>
+		Chọn phường xã
+	</option>
+	<%
+		long xa = ActionUtils.getValueLong(request, "xa");
+		if(xa==0){
+			xa = hoSo.getXa();
+		}
+		List<DonViHanhChinhSoap> danhSachXaThuongTru = service.getDanhsachDVHC(quan);
+	%>
+	<%
+		if(quan !=0){
+				for (DonViHanhChinhSoap item : danhSachXaThuongTru) {
+	%>
+	<option value="<%=item.getId()%>"
+		<%=ActionUtils.checkData(item.getId(),
+				xa)%>><%=item.getTen()%></option>
+	<%
+		}}
+	%>
+	</select></td>
+	</tr>
+
+	<tr>
+		<td colspan="6"><label class="egov-label-bold">Số nhà/ đường phố /xóm/ thôn ấp</label>
+				<label class="egov-label-red">*</label><br> 
+				<input type="text"
+						class="egov-inputfield" name="diaChi"
+						id="diaChi" maxlength="200"
+						value=" <%=hoSo.getDiaChi()%>" /></td>
+	</tr>
+
+
+<!-- Review Dia Chi -->
+<tr>
+	<td colspan="6"><label class="egov-label-bold">Trụ sở chính : </label> 
+	<label class="egov-label">
+	<%=(hoSo.getDiaChi().length() == 0 ? "" : hoSo.getDiaChi()+",") 
+	    + (hoSo.getXa()  >0 ? " "+service.getDonViHanhChinhTheoId(hoSo.getXa()).getTen()+"," : "") 
+		+ (hoSo.getQuan() >0 ? " "+service.getDonViHanhChinhTheoId(hoSo.getQuan()).getTen()+"," : "")
+		+ (hoSo.getTinh() >0 ? " " +service.getDonViHanhChinhTheoId(hoSo.getTinh()).getTen()+"." : "")
+	%>
+	</label>
+	</td>
+</tr>

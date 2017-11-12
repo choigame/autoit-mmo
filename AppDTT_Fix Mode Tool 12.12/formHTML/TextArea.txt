@@ -1,0 +1,24 @@
+﻿<tr>
+<!-- Nhớ Get từ Entity -->
+	<td colspan="6"><label class="egov-label-bold"></label>
+	<label class="egov-label-red">*</label><br>
+		<textarea rows="6" name="" id=""
+	 class="egov-textarea" maxlength="1000"><%=hoSo.get%></textarea>
+	</td>
+</tr>
+
+<!-- review1 -->
+<tr>
+	<td colspan="6"><label class="egov-label-bold">Lý do miễn nhiệm : </label>
+	<br><textarea rows="4" class="egov-textarea" readonly="readonly"><%=%></textarea>
+	</td>
+</tr>
+
+<!-- review2 -->
+<tr>
+	<td  colspan="6" style="word-wrap: break-word;">
+			<label class="egov-label" style="text-align: justify;">
+			<%=%>
+			</label>
+	</td>
+</tr>

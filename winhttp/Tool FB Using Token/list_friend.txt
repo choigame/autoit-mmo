@@ -1,0 +1,151 @@
+{
+   "friends": {
+      "data": [
+         {
+            "birthday": "03/10/1990",
+            "name": "Nguy\u1ec5n Ti\u1ebfn D\u0169ng",
+            "email": "chanem_ghe20022003\u0040yahoo.com",
+            "id": "783073568"
+         },
+         {
+            "birthday": "02/17/1982",
+            "name": "Truong Quang Hieu",
+            "email": "hieuhuda\u0040gmail.com",
+            "id": "1039629824"
+         },
+         {
+            "birthday": "06/07/1990",
+            "name": "Vu Ho Dac",
+            "email": "theprophetofthehell76\u0040yahoo.com",
+            "id": "1276051519"
+         },
+         {
+            "birthday": "08/26/1979",
+            "name": "Joost Mattheijssen",
+            "email": "de_hek\u0040yahoo.com",
+            "id": "1396988329"
+         },
+         {
+            "name": "H\u1ed3 Ng\u1ecdc Ph\u00fac",
+            "id": "1584270762"
+         },
+         {
+            "birthday": "02/12/1990",
+            "name": "Th\u00f9y Trang",
+            "email": "thuytrang120209\u0040gmail.com",
+            "id": "1833668348"
+         },
+         {
+            "name": "Ng\u1ecdc Th\u01b0",
+            "id": "1843857288"
+         },
+         {
+            "birthday": "06/13/1990",
+            "name": "Hanh Nguyen",
+            "id": "100000012007871"
+         },
+         {
+            "name": "Tr\u1ea7n Th\u1ecb Th\u00f9y Tr\u00e2m",
+            "id": "100000038735613"
+         },
+         {
+            "birthday": "03/02/1987",
+            "name": "Dat Nguyen",
+            "email": "datvictory2341\u0040gmail.com",
+            "id": "100000042405858"
+         },
+         {
+            "birthday": "01/10/1990",
+            "name": "Tran Vu Tho",
+            "email": "badkid10190\u0040yahoo.com",
+            "id": "100000112789700"
+         },
+         {
+            "birthday": "02/28/1991",
+            "name": "Linh Tran",
+            "email": "tranlinh173\u0040gmail.com",
+            "id": "100000123821248"
+         },
+         {
+            "birthday": "10/31/1988",
+            "name": "Ph\u01b0\u01a1ng Xu\u00e2n Ph\u1ea1m",
+            "email": "co_be_lam_chieu_120\u0040yahoo.com",
+            "id": "100000162805507"
+         },
+         {
+            "birthday": "10/03/1988",
+            "name": "Ng\u00f4 Thu\u1ef3 Dung",
+            "email": "emyeuanhnhieu882002\u0040yahoo.com",
+            "id": "100000181502070"
+         },
+         {
+            "birthday": "02/26",
+            "name": "Nhung Thu Phan",
+            "email": "giolaocattrangsks\u0040yahoo.com",
+            "id": "100000182435929"
+         },
+         {
+            "name": "Duy Anh",
+            "email": "boya1_01\u0040yahoo.com",
+            "id": "100000217220278"
+         },
+         {
+            "birthday": "07/12",
+            "name": "Sin Xo\u0103n",
+            "email": "sinnguyen91\u0040yahoo.com",
+            "id": "100000241767854"
+         },
+         {
+            "birthday": "02/28",
+            "name": "Diep Nguyen",
+            "email": "diepnt282\u0040gmail.com",
+            "id": "100000342969400"
+         },
+         {
+            "name": "Hai Tran",
+            "id": "100000347966193"
+         },
+         {
+            "name": "H\u1ea1nh Th\u00e2n",
+            "id": "100000368676849"
+         },
+         {
+            "birthday": "08/19/1991",
+            "name": "Quang Ho\u00e0ng",
+            "email": "ginmafia_dn\u0040yahoo.com",
+            "id": "100000428371285"
+         },
+         {
+            "birthday": "07/27/1988",
+            "name": "Vinh L\u00ea",
+            "id": "100000528057433"
+         },
+         {
+            "birthday": "04/20/1987",
+            "name": "Luan Nguyen",
+            "email": "luan06n1\u0040gmail.com",
+            "id": "100000662525509"
+         },
+         {
+            "name": "M\u1ef9 Vy Nguy\u1ec5n",
+            "email": "ivynguyen0109\u0040gmail.com",
+            "id": "100000826601498"
+         },
+         {
+            "name": "Ph\u01b0\u1edbc Ph\u01b0\u1edbc",
+            "id": "100000986773518"
+         }
+      ],
+      "paging": {
+         "cursors": {
+            "before": "QVFIUm5STENCcHdNanh5ckQwWDU3ZAGJPNFZA0UThMX09VNWExN1ZAWYVA0dzk5aG5lTWt3b1Vaa05EYjVqTklidkU1dTEZD",
+            "after": "QVFIUnNieG1PMXFXTkVTUEVOdDhzMUJxbmVBMGdOQzRMRHNIVHNPZAkNLSU1vaXY0RFJldTBhVXlSMnM5dExBOEIwQ1RZAc1ZAPc0hGRU9SRjM5Q2FCTGlmTldR"
+         },
+         "next": "https://graph.facebook.com/v2.4/100000471412254/friends?access_token=EAAAAUaZA8jlABALHlHFcZAdbHzPNigxTxI5JY58baK2L4VIPBGwPfhes024FEShqtbPgA4Lg1Jwd8qM4uFyUdRmkmsUbSepXgUZBenjZA6wBmeCdKTedZCfS173hV9ZBRh6B2TiXRlMoZBKshNq90Pur64CeTRoYaqmshZBe3jOQi1C0ZB2YahDOm&pretty=1&fields=birthday\u00252Cname\u00252Cemail&limit=25&after=QVFIUnNieG1PMXFXTkVTUEVOdDhzMUJxbmVBMGdOQzRMRHNIVHNPZAkNLSU1vaXY0RFJldTBhVXlSMnM5dExBOEIwQ1RZAc1ZAPc0hGRU9SRjM5Q2FCTGlmTldR"
+      },
+      "summary": {
+         "total_count": 128
+      }
+   },
+   "id": "100000471412254"
+}

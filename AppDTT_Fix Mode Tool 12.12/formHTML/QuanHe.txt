@@ -1,0 +1,25 @@
+﻿<!-- Nhớ Get từ Entity -->
+<!-- Chủ Hộ = 0 -->
+<tr>
+	<td colspan="6">
+		<label class="egov-label-bold">Quan hệ</label>
+		<label class="egov-label-red">*</label><br>
+	<select class="egov-select"
+		name=""
+		id="">
+			<option value="-1"> 
+				Chọn quan hệ
+			</option>
+			<%
+			for (QuanHeGiaDinh item : QuanHeGiaDinhLocalServiceUtil.getQuanHeGiaDinhs(0, 2000)) {
+			%>
+			<option value="<%=item.getId()%>"
+				<%=ActionUtils.checkData(item.getId(), hoSo.getQuanHe())%> > <%=item.getTen()%>
+				<!-- Nhớ Get từ Entity -->
+			</option>
+			<%
+				}
+			%>
+	</select>
+	</td>
+</tr>

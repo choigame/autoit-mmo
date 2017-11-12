@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.1.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_1_0.dtd">
+<service-builder package-path="vn.dtt.csms.khaisinhkethopchameconnn">
+<author>Tan</author>
+<namespace>csms</namespace>
+<entity name="KhaiSinhKetHopChaMeConNN" local-service="true" remote-service="false"  table="csms_khaisinhkethopchameconnn" data-source="egovDataSource">
+<column name="id" db-name="id" type="long" primary="true"/>
+<column name="coQuanQuanLyId" db-name="coQuanQuanLyId" type="long"/>
+<column name="ten1Tab1" db-name="ten1Tab1" type="String"/>
+<column name="quocGia1Tab1" db-name="quocGia1Tab1" type="long"/>
+<column name="tinh1" db-name="tinh1" type="long"/>
+<column name="quan1" db-name="quan1" type="long"/>
+<column name="xa1" db-name="xa1" type="long"/>
+<column name="diaChi1" db-name="diaChi1" type="String"/>
+<column name="radio1Tab1" db-name="radio1Tab1" type="String"/>
+<column name="cmnd1Tab1" db-name="cmnd1Tab1" type="String"/>
+<column name="ngayCapCmnd1Tab1" db-name="ngayCapCmnd1Tab1" type="Date"/>
+<column name="noiCapCmnd1Tab1" db-name="noiCapCmnd1Tab1" type="long"/>
+<column name="hoChieu1Tab1" db-name="hoChieu1Tab1" type="String"/>
+<column name="ngayCapHoChieu1Tab1" db-name="ngayCapHoChieu1Tab1" type="Date"/>
+<column name="noiCapHoChieu1Tab1" db-name="noiCapHoChieu1Tab1" type="String"/>
+<column name="tenGTK1Tab1" db-name="tenGTK1Tab1" type="String"/>
+<column name="soGTK1Tab1" db-name="soGTK1Tab1" type="String"/>
+<column name="noiCapGTK1Tab1" db-name="noiCapGTK1Tab1" type="String"/>
+<column name="ngayCapGTK1Tab1" db-name="ngayCapGTK1Tab1" type="Date"/>
+<column name="quanHe1Tab1" db-name="quanHe1Tab1" type="long"/>
+<column name="ten2Tab1" db-name="ten2Tab1" type="String"/>
+<column name="sex2Tab1" db-name="sex2Tab1" type="long"/>
+<column name="birth2Tab1" db-name="birth2Tab1" type="Date"/>
+<column name="birth2BangChuTab1" db-name="birth2BangChuTab1" type="String"/>
+<column name="danToc2Tab1" db-name="danToc2Tab1" type="long"/>
+<column name="quocTich2Tab1" db-name="quocTich2Tab1" type="long"/>
+<column name="quocGia2Tab1" db-name="quocGia2Tab1" type="long"/>
+<column name="tinh2" db-name="tinh2" type="long"/>
+<column name="quan2" db-name="quan2" type="long"/>
+<column name="xa2" db-name="xa2" type="long"/>
+<column name="diaChi2" db-name="diaChi2" type="String"/>
+<column name="ten3Tab1" db-name="ten3Tab1" type="String"/>
+<column name="birth3Tab1" db-name="birth3Tab1" type="Date"/>
+<column name="namSinh3Tab1" db-name="namSinh3Tab1" type="long"/>
+<column name="danToc3Tab1" db-name="danToc3Tab1" type="long"/>
+<column name="quocTich3Tab1" db-name="quocTich3Tab1" type="long"/>
+<column name="quocGia3Tab1" db-name="quocGia3Tab1" type="long"/>
+<column name="tinh3" db-name="tinh3" type="long"/>
+<column name="quan3" db-name="quan3" type="long"/>
+<column name="xa3" db-name="xa3" type="long"/>
+<column name="diaChi3" db-name="diaChi3" type="String"/>
+<column name="ten4Tab1" db-name="ten4Tab1" type="String"/>
+<column name="birth4Tab1" db-name="birth4Tab1" type="Date"/>
+<column name="namSinh4Tab1" db-name="namSinh4Tab1" type="long"/>
+<column name="danToc4Tab1" db-name="danToc4Tab1" type="long"/>
+<column name="quocTich4Tab1" db-name="quocTich4Tab1" type="long"/>
+<column name="quocGia4Tab1" db-name="quocGia4Tab1" type="long"/>
+<column name="tinh4" db-name="tinh4" type="long"/>
+<column name="quan4" db-name="quan4" type="long"/>
+<column name="xa4" db-name="xa4" type="long"/>
+<column name="diaChi4" db-name="diaChi4" type="String"/>
+<column name="ten1Tab2" db-name="ten1Tab2" type="String"/>
+<column name="birth1Tab2" db-name="birth1Tab2" type="Date"/>
+<column name="danToc1Tab2" db-name="danToc1Tab2" type="long"/>
+<column name="quocTich1Tab2" db-name="quocTich1Tab2" type="long"/>
+<column name="tinh5" db-name="tinh5" type="long"/>
+<column name="quan5" db-name="quan5" type="long"/>
+<column name="xa5" db-name="xa5" type="long"/>
+<column name="diaChi5" db-name="diaChi5" type="String"/>
+<column name="radio1Tab2" db-name="radio1Tab2" type="String"/>
+<column name="cmnd1Tab2" db-name="cmnd1Tab2" type="String"/>
+<column name="ngayCapCmnd1Tab2" db-name="ngayCapCmnd1Tab2" type="Date"/>
+<column name="noiCapCmnd1Tab2" db-name="noiCapCmnd1Tab2" type="long"/>
+<column name="hoChieu1Tab2" db-name="hoChieu1Tab2" type="String"/>
+<column name="noiCapHoChieu1Tab2" db-name="noiCapHoChieu1Tab2" type="long"/>
+<column name="ngayCapHoChieu1Tab2" db-name="ngayCapHoChieu1Tab2" type="Date"/>
+<column name="tenGTK1Tab2" db-name="tenGTK1Tab2" type="String"/>
+<column name="soGTK1Tab2" db-name="soGTK1Tab2" type="String"/>
+<column name="noiCapGTK1Tab2" db-name="noiCapGTK1Tab2" type="String"/>
+<column name="ngayCapGTK1Tab2" db-name="ngayCapGTK1Tab2" type="Date"/>
+<column name="quanHe1" db-name="quanHe1" type="long"/>
+<column name="ten2Tab2" db-name="ten2Tab2" type="String"/>
+<column name="birth2Tab2" db-name="birth2Tab2" type="Date"/>
+<column name="danToc2Tab2" db-name="danToc2Tab2" type="long"/>
+<column name="quocTich2Tab2" db-name="quocTich2Tab2" type="long"/>
+<column name="tinh6" db-name="tinh6" type="long"/>
+<column name="quan6" db-name="quan6" type="long"/>
+<column name="xa6" db-name="xa6" type="long"/>
+<column name="diaChi6" db-name="diaChi6" type="String"/>
+<column name="radio2Tab2" db-name="radio2Tab2" type="String"/>
+<column name="cmnd2Tab2" db-name="cmnd2Tab2" type="String"/>
+<column name="ngayCapCmnd2Tab2" db-name="ngayCapCmnd2Tab2" type="Date"/>
+<column name="noiCapCmnd2Tab2" db-name="noiCapCmnd2Tab2" type="long"/>
+<column name="hoChieu2Tab2" db-name="hoChieu2Tab2" type="String"/>
+<column name="noiCapHoChieu2Tab2" db-name="noiCapHoChieu2Tab2" type="long"/>
+<column name="ngayCapHoChieu2Tab2" db-name="ngayCapHoChieu2Tab2" type="Date"/>
+<column name="tenGTK2Tab2" db-name="tenGTK2Tab2" type="String"/>
+<column name="soGTK2Tab2" db-name="soGTK2Tab2" type="String"/>
+<column name="noiCapGTK2Tab2" db-name="noiCapGTK2Tab2" type="String"/>
+<column name="ngayCapGTK2Tab2" db-name="ngayCapGTK2Tab2" type="Date"/>
+<column name="quanHe2Tab2" db-name="quanHe2Tab2" type="long"/>
+<column name="ten3Tab2" db-name="ten3Tab2" type="String"/>
+<column name="birth3Tab2" db-name="birth3Tab2" type="Date"/>
+<column name="danToc3Tab2" db-name="danToc3Tab2" type="long"/>
+<column name="quocTich3Tab2" db-name="quocTich3Tab2" type="long"/>
+<column name="tinh7" db-name="tinh7" type="long"/>
+<column name="quan7" db-name="quan7" type="long"/>
+<column name="xa7" db-name="xa7" type="long"/>
+<column name="diaChi7" db-name="diaChi7" type="String"/>
+<column name="radio3Tab2" db-name="radio3Tab2" type="String"/>
+<column name="cmnd3Tab2" db-name="cmnd3Tab2" type="String"/>
+<column name="ngayCapCmnd3Tab2" db-name="ngayCapCmnd3Tab2" type="Date"/>
+<column name="noiCapCmnd3Tab2" db-name="noiCapCmnd3Tab2" type="long"/>
+<column name="hoChieu3Tab2" db-name="hoChieu3Tab2" type="String"/>
+<column name="noiCapHoChieu3Tab2" db-name="noiCapHoChieu3Tab2" type="long"/>
+<column name="ngayCapHoChieu3Tab2" db-name="ngayCapHoChieu3Tab2" type="Date"/>
+<column name="tenGTK3Tab2" db-name="tenGTK3Tab2" type="String"/>
+<column name="soGTK3Tab2" db-name="soGTK3Tab2" type="String"/>
+<column name="noiCapGTK3Tab2" db-name="noiCapGTK3Tab2" type="String"/>
+<column name="ngayCapGTK3Tab2" db-name="ngayCapGTK3Tab2" type="Date"/>
+<column name="yKien1" db-name="yKien1" type="String"/>
+<column name="yKien2" db-name="yKien2" type="String"/>
+<column name="maQuiTrinh" db-name="maQuiTrinh" type="String" />
+<column name="ngayTao" db-name="ngayTao" type="Date" />
+<column name="ngaySua" db-name="ngaySua" type="Date" />
+<column name="nguoiTao" db-name="nguoiTao" type="String" />
+<column name="nguoiSua" db-name="nguoiSua" type="String" />
+<column name="xoa" db-name="xoa" type="int"  />
+<order by="asc">
+<order-column name="id" />
+</order>
+</entity>
+</service-builder>

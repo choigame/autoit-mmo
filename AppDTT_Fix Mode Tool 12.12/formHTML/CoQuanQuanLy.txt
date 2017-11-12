@@ -1,0 +1,18 @@
+﻿<tr>
+	<td colspan="6">
+		<label class="egov-label-bold"> 
+		Cơ quan giải quyết hồ sơ 
+		</label>
+		<label class="egov-label-red">*</label>
+		<select class="egov-select" name="coQuanQuanLyId" id="coQuanQuanLyId">
+			<%
+				for (CoQuanQuanLySoap item : coQuanQuanLySoaps) {
+			%>
+				<option value="<%=item.getId()%>"
+					<%=ActionUtils.checkData(item.getId(),
+					hoSo.getCoQuanQuanLyId())%>><%=item.getTen()%></option>
+					<!-- Nhớ Get từ Entity -->
+				<%}%>
+		</select>
+	</td>
+</tr>

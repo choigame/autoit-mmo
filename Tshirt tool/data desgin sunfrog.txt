@@ -1,0 +1,96 @@
+{"ArtOwnerID":0,"IAgree":true,"Title":"Life Tshirt","Category":"43","Description":"Description","Collections":"gun","Keywords":["tag1","tag2","tag3"],"imageFront":"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"311.00000000008 150 387.99999999984004 517.33333333312\" height=\"3200\" width=\"2400\" version=\"1.1\" id=\"SvgjsSvg1000\"><g transform=\"scale(0.14495238095232 0.14495238095232) translate(2233.9027595284033 1069.3166885681237)\" id=\"SvgjsG1054\"><image height=\"3500\" width=\"2500\" xlink:href=\"__dataURI:0__\" id=\"SvgjsImage1055\"></image></g><defs id=\"SvgjsDefs1001\"></defs></svg>","imageBack":"","types":[{"id":8,"name":"Guys Tee","price":19,"colors":["Black","Navy Blue"]},{"id":34,"name":"Ladies Tee","price":19,"colors":["Black","Red"]},{"id":19,"name":"Hoodie","price":34,"colors":["Black","Navy Blue"]},{"id":27,"name":"Sweat Shirt","price":31,"colors":["Black","Navy Blue"]}],"images":[{"id":"__dataURI:0__","uri":"data:image/png;base64,base64 of design"}]}
+
+
+->
+
+{
+	"ArtOwnerID":0,"IAgree":true,
+
+	"Title":"Life Tshirt",
+
+	"Category":"43",
+
+	"Description":"Description",
+
+	"Collections":"gun",
+
+	"Keywords":["tag1","tag2","tag3"],
+
+	"imageFront":"<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"311.00000000008 150 387.99999999984004 517.33333333312\" height=\"3200\" width=\"2400\" version=\"1.1\" id=\"SvgjsSvg1000\"><g transform=\"scale(0.14495238095232 0.14495238095232) translate(2233.9027595284033 1069.3166885681237)\" id=\"SvgjsG1054\"><image height=\"3500\" width=\"2500\" xlink:href=\"__dataURI:0__\" id=\"SvgjsImage1055\"></image></g><defs id=\"SvgjsDefs1001\"></defs></svg>",
+
+	"imageBack":"",
+
+	"types":[{"id":8,"name":"Guys Tee","price":19,"colors":["Black","Navy Blue"]},{"id":34,"name":"Ladies Tee","price":19,"colors":["Black","Red"]},{"id":19,"name":"Hoodie","price":34,"colors":["Black","Navy Blue"]},{"id":27,"name":"Sweat Shirt","price":31,"colors":["Black","Navy Blue"]}],
+
+	"images":[{"id":"__dataURI:0__","uri":"data:image/png;base64,base64 of design"}]
+}
+
+* imageFront
+SvgjsSvg1000 -> front
+height=\"3500\" width=\"2500\" of PNG
+
+<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"311.00000000008 150 387.99999999984004 517.33333333312\" height=\"3200\" width=\"2400\" version=\"1.1\" id=\"SvgjsSvg1000\"><g transform=\"scale(0.14495238095232 0.14495238095232) translate(2233.9027595284033 1069.3166885681237)\" id=\"SvgjsG1054\"><image height=\"3500\" width=\"2500\" xlink:href=\"__dataURI:0__\" id=\"SvgjsImage1055\"></image></g><defs id=\"SvgjsDefs1001\"></defs></svg>
+
+fullWidth
+<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"311.00000000008 150 387.99999999984004 517.33333333312\" height=\"3200\" width=\"2400\" version=\"1.1\" id=\"SvgjsSvg1000\"><g transform=\"scale(0.0801246185297745 0.07682212800319806) translate(3922.6821127683847 2017.6478318011114)\" id=\"SvgjsG1054\"><image height=\"6604\" width=\"4760\" xlink:href=\"__dataURI:0__\" id=\"SvgjsImage1055\"></image></g><defs id=\"SvgjsDefs1001\"></defs></svg>
+
+
+SvgjsSvg1006 -> back
+
+<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"311.00000000008 100 387.99999999984004 517.33333333312\" height=\"3200\" width=\"2400\" version=\"1.1\" id=\"SvgjsSvg1006\"><g transform=\"scale(0.07682212800319806 0.07682212800319806) translate(4193.626806835879 1366.7936925104302)\" id=\"SvgjsG1054\"><image height=\"6604\" width=\"4760\" xlink:href=\"__dataURI:0__\" id=\"SvgjsImage1055\"></image></g><defs id=\"SvgjsDefs1007\"></defs></svg>
+
+fullWidth
+<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" viewBox=\"311.00000000008 100 387.99999999984004 517.33333333312\" height=\"3200\" width=\"2400\" version=\"1.1\" id=\"SvgjsSvg1006\"><g transform=\"scale(0.08095024060739932 0.07682212800319806) translate(3858.4002346478524 1366.7936925104302)\" id=\"SvgjsG1052\"><image height=\"6604\" width=\"4760\" xlink:href=\"__dataURI:0__\" id=\"SvgjsImage1053\"></image></g><defs id=\"SvgjsDefs1007\"></defs></svg>
+
+
+<option value="52">Automotive</option>
+<option value="76">Birth Years</option>
+<option value="78">Drinking</option>
+<option value="26">Faith</option>
+<option value="61">Fitness</option>
+<option value="19">Funny</option>
+<option value="13">Gamer</option>
+<option value="24">Geek-Tech</option>
+<option value="82">Hobby</option>
+<option value="35">Holidays</option>
+<option value="79">Jobs</option>
+<option value="43">LifeStyle</option>
+<option value="12">Movies</option>
+<option value="71">Music</option>
+<option value="75">Names</option>
+<option value="81">Outdoor</option>
+<option value="62">Pets</option>
+<option value="17">Political</option>
+<option value="27">Sports</option>
+<option value="77">States</option>
+<option value="34">TV Shows</option>
+<option value="11">Zombies</option>
+
+color:
+White Sports Grey Dark Grey Brown Light Pink
+Hot Pink Red Orange Yellow Green
+Forest Light Blue Royal Blue Navy Blue Purple
+Black Maroon
+
+White,Sports Grey,Dark Grey,Brown,Light Pink,Hot Pink,Red,Orange,Yellow,Green,Forest,Light Blue,Royal Blue,Navy Blue,Purple,Black,Maroon
+
+<option data-bind="text: description, value: id" value="8">Guys Tee</option>
+<option data-bind="text: description, value: id" value="34">Ladies Tee</option>
+<option data-bind="text: description, value: id" value="35">Youth Tee</option>
+<option data-bind="text: description, value: id" value="19">Hoodie</option>
+<option data-bind="text: description, value: id" value="27">Sweat Shirt</option>
+<option data-bind="text: description, value: id" value="50">Guys V-Neck</option>
+<option data-bind="text: description, value: id" value="116">Ladies V-Neck</option>
+<option data-bind="text: description, value: id" value="118">Unisex Tank Top</option>
+<option data-bind="text: description, value: id" value="119">Unisex Long Sleeve</option>
+<option data-bind="text: description, value: id" value="120">Leggings</option>
+<option data-bind="text: description, value: id" value="128">Coffee Mug (colored)</option>
+<option data-bind="text: description, value: id" value="129">Coffee Mug (white)</option>
+<option data-bind="text: description, value: id" value="145">Coffee Mug (color change)</option>
+<option data-bind="text: description, value: id" value="137">Posters 16x24</option>
+<option data-bind="text: description, value: id" value="138">Posters 24x16</option>
+<option data-bind="text: description, value: id" value="139">Posters 11x17</option>
+<option data-bind="text: description, value: id" value="140">Posters 17x11</option>
+<option data-bind="text: description, value: id" value="143">Canvas 16x20</option>
+<option data-bind="text: description, value: id" value="147">Hat</option>
+<option data-bind="text: description, value: id" value="148">Trucker Cap</option>

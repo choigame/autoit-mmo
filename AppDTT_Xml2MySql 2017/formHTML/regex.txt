@@ -1,0 +1,14 @@
+public static boolean regexCmnd(String cmnd){
+	String patternCmnd = "^([0-9]{9}|[0-9]{12})?$";
+	Pattern mypattern = Pattern.compile(patternCmnd);
+	Matcher matcher = mypattern.matcher(cmnd);
+	return matcher.matches();
+}
+public static boolean regexEmail(String email) {
+	String patternEmail = "^\\w+([\\.-]?\\w+)*@\\w+([\\.]\\w{2,3}|[\\.]\\w{2,3}[\\.]\\w{2,3})$";
+	Pattern mypattern = Pattern.compile(patternEmail);
+	Matcher matcher = mypattern.matcher(email);
+	return matcher.matches();
+}
+
+String patternPhone = "^(\+?\d{2,}[\s|\.]?)?\d+([\.|\s]?\d+)*$";

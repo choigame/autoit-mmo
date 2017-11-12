@@ -1,0 +1,10 @@
+﻿<tr>
+	<td colspan="2">
+		<label class="egov-label-bold">Ngày sinh</label>
+		<label class="egov-label-red">*</label><br> 
+		<input type="text" class="egov-calendar" readonly="readonly"
+			name="" id=""
+			value="<%=hoSo.getNgaySinh()!=null ? 
+			ActionUtils.parseDateToTring(hoSo.getNgaySinh()) : ""%>"/>
+	</td>
+</tr>

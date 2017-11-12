@@ -1,0 +1,23 @@
+{
+	"ArtOwnerID":0,"IAgree":true,
+
+	"Title":"#TITLE",
+
+	"Category":"#CATEGORY",
+
+	"Description":"#DESC",
+
+	"Collections":"#COLLECTION",
+
+	"Keywords":[#KEYWORDS],
+
+	"imageFront":"#IMAGEFRONT",
+
+	"imageBack":"#IMAGEBACK",
+
+	"types":[#TYPES],
+
+	"images":[#IMAGES]
+}
+
+

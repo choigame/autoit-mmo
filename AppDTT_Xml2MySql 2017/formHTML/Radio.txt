@@ -1,0 +1,97 @@
+﻿<%
+	String area1 = "area1";
+	String area2 = "area2";
+	String radio = ActionUtils.getValueString(request, "radio");
+	if ("".equals(radio)) radio = area1;
+%>
+
+<tr>
+	<td colspan="2"><input type="radio"
+		name="radio" value="<%=area1%>"
+		<%=area1.equals(radio) ? "checked":""%>
+		onclick="showArea(this.value);"> <label
+		class="egov-label-bold"> <liferay-ui:message
+				key="vn.dtt.csms.dangkynhanchameconnn.chungminhnhandan" />
+	</label></td>
+
+	<td colspan="2"><input type="radio"
+		name="radio" value="<%=area2%>"
+		<%=area2.equals(radio)?"checked":""%>
+		onclick="showArea(this.value);"> <label
+		class="egov-label-bold"> <liferay-ui:message
+				key="vn.dtt.csms.dangkynhanchameconnn.giaytohoplethaythe" />
+		</label>
+	</td>
+</tr>
+
+<tr id="area1"
+	<%=area1.equals(radio) ? "":"style='display:none'"%>>
+	<td colspan="2"><label class="egov-label-bold"><liferay-ui:message
+				key="vn.dtt.csms.dangkynhanchameconnn.cmndso" /></label><label
+		class="egov-label-red">*</label> <br> <input type="text"
+		class="egov-inputfield NUMERIC" name="cmndNguoiNopDon"
+		id="cmndNguoiNopDon" value="<%=hoSo.getCmndNguoiNopDon()%>" /></td>
+
+	<td colspan="2"><label class="egov-label-bold"><liferay-ui:message
+				key="vn.dtt.csms.dangkynhanchameconnn.ngaycap"/></label> <br>
+		<input type="text" class="egov-calendar" readonly="readonly"
+		name="ngayCapCmnd" id="ngayCapCmnd"
+		value="<%=DateTimeUtil.getDayMonthYear(hoSo.getNgayCapCmnd())%>" />
+	</td>
+
+</tr>
+<tr>
+	<td colspan="6"><label class="egov-label-bold">Nơi cấp</label>
+	<label class="egov-label-red">*</label> <br> 
+		<select class="egov-select" name="noiCapCmnd" id="noiCapCmnd">
+			<option>
+				Chọn nơi cấp
+			</option>
+			<%
+				for (DonViHanhChinh item : DonViHanhChinhLocalServiceUtil.getDanhSachNoiCapCMND()) {
+			%>
+			<option value="<%=item.getId()%>"
+				<%=ActionUtils.checkData(item.getId(), hoSo.getNoiCapCmnd())%>>
+				<%=item.getMa().length()>=4 ? "Cục cảnh sát ĐKQL cư trú và dữ liệu quốc gia về dân cư" : "Công an"%>&nbsp;<%=item.getTen()%>
+			</option>
+			<%}%>
+		</select>
+	</td>
+</tr>
+
+<tbody id="area2"
+	<%=area2.equals(radio) ? "":"style='display:none'"%>>
+	<tr>
+		<td colspan="3"><label class="egov-label-bold"><liferay-ui:message
+					key="vn.dtt.csms.dangkynhanchameconnn.loaigiaytokhac" /></label> <label
+			class="egov-label-red">*</label> <br> <input type="text"
+			name="loaiGiayToKhac" id="loaiGiayToKhac" class="egov-inputfield"
+			style="width: 98%" value="<%=hoSo.getLoaiGiayToKhac()%>" /></td>
+
+		<td colspan="3"><label class="egov-label-bold"><liferay-ui:message
+					key="vn.dtt.csms.dangkynhanchameconnn.sogiaychungthuckhac" /></label><label
+			class="egov-label-red">*</label> <br> <input type="text"
+			class="egov-inputfield" name="soGiayToKhac" id="soGiayToKhac"
+			value="<%=hoSo.getSoGiayToKhac()%>" /></td>
+	</tr>
+	<tr>
+	</tr>
+</tbody>
+
+<script>
+	$(document).ready(function(){
+		showArea($('#radioHidden').val());
+	});
+	function showArea(nameSelected){
+		if (nameSelected =='<%=area1%>') {
+			document.getElementById('area1').style.display = '';
+			document.getElementById('area2').style.display = 'none';
+			$('#radioHidden').val('area1');
+	
+		} else if (nameSelected =='<%=area2%>') {
+			document.getElementById('area1').style.display = 'none';
+			document.getElementById('area2').style.display = '';
+			$('#radioHidden').val('area2');
+		}
+	}
+</script>

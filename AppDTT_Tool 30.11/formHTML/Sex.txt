@@ -1,0 +1,22 @@
+﻿<!-- Nhớ Get từ Entity -->
+<tr>					
+	<td colspan="2"><label class="egov-label-bold">
+	Giới tính</label>
+		<label class="egov-label-red">*</label><br>
+	<select name="sex" id="sex" class="egov-select">
+	<option value="-1">
+	<!-- Vi Nu = 0 -->
+		Chọn giới tính
+	</option>
+	<%
+		for (GioiTinhSoap item : service.getDSGioiTinh()) {
+	%>
+	<option value="<%=item.getId()%>"
+		<%=ActionUtils.checkData(item.getId(), hoSo.getSex())%>><%=item.getTen()%>
+		</option>
+	<%
+		}
+	%>
+	</select>
+	</td>
+</tr>

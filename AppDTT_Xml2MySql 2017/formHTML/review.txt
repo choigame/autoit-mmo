@@ -1,0 +1,6 @@
+﻿<tr>
+	<td colspan="6">
+		<label class="egov-label-bold">Label:</label>
+		<label class="egov-label" style="word-wrap: break-word;"><%=%></label>
+	</td>
+</tr>

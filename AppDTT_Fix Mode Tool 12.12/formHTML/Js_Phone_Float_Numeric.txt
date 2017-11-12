@@ -1,0 +1,59 @@
+function onlyPhoneNumeric(id) {
+var value = $(id).val();
+if (value.trim().indexOf("+") >= 0) {
+if (value.lastIndexOf(" ") == value.length - 1) {
+value = value.replace(/[^0-9. ]/g, '');
+value = "+" + value.trim();
+value += " ";
+} else {
+value = value.replace(/[^0-9. ]/g, '');
+value = "+" + value.trim();
+}
+} else {
+value = value.replace(/[^0-9. ]/g, '');
+if (value.lastIndexOf(" ") == value.length - 1) {
+	value = value.trim();
+	value += " ";
+} else {
+	value = value.trim();
+}
+}
+value = value.replace(/\.\./g, '.');
+value = value.replace(/\s\s/g, ' ');
+value = value.replace(/\s\./g, '.');
+value = value.replace(/\.\s/g, ' ');
+$(id).val(value);
+}
+
+
+function inputFloat(id){
+		var value = $(id).val();
+		var indexOfComa = value.indexOf(',');
+		if(indexOfComa == -1){
+			value = value.replace(/[^0-9]/g, "");
+			value = parseInt(value,10).toLocaleString('de-DE');
+		}else{
+			var numberAfterComa = value.charAt(indexOfComa+1)+value.charAt(indexOfComa+2);
+			numberAfterComa=numberAfterComa.replace(/[^0-9]/g, "");
+			value = value.substring(0,indexOfComa);
+			value = value.replace(/[^0-9]/g, "");
+			value = parseInt(value,10).toLocaleString('de-DE');
+
+			value = value + ',' + numberAfterComa;
+		}
+		if(value=='NaN') value= '';
+		$(id).val(value);
+}
+
+function numericFormat(id) {
+	var value = $(id).val();
+	value = value.replace(/[^0-9]/g, "");
+	value = parseInt(value,10).toLocaleString('de-DE');
+	if(value=='NaN') value= '';
+	$(id).val(value);
+}
+
+function onlyNumeric(id){
+	var value = $(id).val().replace(/[^0-9]/g,"");
+	$(id).val(value);
+}

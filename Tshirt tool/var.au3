@@ -1,0 +1,18 @@
+
+Global $ComboBox_Changed = False
+Global $DebugIt = 1
+Global $changed = 0
+
+
+;color
+Global $yellow = 0xFFFC22
+Global $darkRed = 0x8B0000
+Global $red = 0xFF0000
+Global $successColor = 0xF11C22
+Global $MediumVioletRed = 0xC71585
+Global $teal= 0x00FFFF
+Global $white = 0xFFFFFF
+Global $xanhLaChuoi = 0x55FFAA
+Global $index0Combo = "--------------"
+
+global $CHOOSE = 'Choose'

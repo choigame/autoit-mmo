@@ -1,0 +1,51 @@
+﻿<script>
+function checkQuocGia(idQuocGia){
+var idQG = document.getElementById(idQuocGia).value;
+if(idQG != 1){
+	document.getElementById("check_"+idQuocGia).style.display='none';
+}else{
+	document.getElementById("check_"+idQuocGia).style.display='';
+}
+}
+</script>
+
+<tr>
+<td colspan="3"><label class="egov-label-bold">Quốc gia</label><label
+class="egov-label-red">*</label> <br> <select
+name="quocGia" id="quocGia" onchange="checkQuocGia('quocGiaId');"
+class="egov-select">
+	<option>
+		Lựa chọn quốc gia
+	</option>
+	<%
+		for (QuocGiaSoap item : service.getDanhSachQuocGia()) {
+	%>
+	<option value="<%=item.getId()%>"
+		<%=ActionUtils.checkData(item.getId(), hoSo.getQuocGia())%>><%=item.getTen()%></option>
+	<%
+		}
+	%>
+</select>
+</td>
+</tr>
+<tbody id="check_quocGia">
+//tinhThanh, quanHuyen, xaPhuong
+</tbody>
+
+
+<!-- Review -->
+
+<tr>
+	<td colspan="6">
+		<label class="egov-label">
+		Nơi cư trú:
+		<%=hoSo.getMoTaDiaChi()%>
+		<%=hoSo.getIdQuocGia() == 1?((hoSo.getIdXa()  >0 ? " "
+				 +service.getDonViHanhChinhTheoId(hoSo.getIdXa()).getTen()+"," : "")
+		+ (hoSo.getIdHuyen() >0 ? " "+service.getDonViHanhChinhTheoId(hoSo.getIdHuyen()).getTen()+"," : "")
+		+ (hoSo.getIdTinh() >0 ? " " +service.getDonViHanhChinhTheoId(hoSo.getIdTinh()).getTen()+", " : "")):"" %>
+		<%=hoSo.getIdQuocGia()>0?service.getQuocGiaTheoId(
+				hoSo.getIdQuocGia()).getTen()+".":"" %>
+		</label>
+	</td>
+</tr>

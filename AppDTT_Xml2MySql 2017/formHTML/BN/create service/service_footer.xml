@@ -1,0 +1,11 @@
+<column name="maQuiTrinh" db-name="maQuiTrinh" type="String" />
+<column name="ngayTao" db-name="ngayTao" type="Date" />
+<column name="ngaySua" db-name="ngaySua" type="Date" />
+<column name="nguoiTao" db-name="nguoiTao" type="String" />
+<column name="nguoiSua" db-name="nguoiSua" type="String" />
+<column name="xoa" db-name="xoa" type="int"  />
+<order by="asc">
+<order-column name="id" />
+</order>
+</entity>
+</service-builder>

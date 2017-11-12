@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.1.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_1_0.dtd">
+<service-builder package-path="vn.dtt.GROUPBYTAN.FOLDERENTITYBYTAN">
+<author>Tan</author>
+<namespace>GROUPBYTAN</namespace>
+<entity name="UPPERFIRSTLETTER" local-service="true" remote-service="false"  table="TABLEBYTAN" data-source="egovDataSource">
+<column name="id" db-name="id" type="long" primary="true"/>
+<column name="coQuanQuanLyId" db-name="coQuanQuanLyId" type="long"/>
