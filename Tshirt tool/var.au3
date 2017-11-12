@@ -18,8 +18,9 @@ Global $xanhLaChuoi = 0x55FFAA
 Global $index0Combo = "--------------"
 
 Global $CHOOSE = 'Choose'
-Global $IS_SUNFROG_LOGIN = false
 global $LOGIN_FAIL = 'Login Fail'
 global $LOGIN_FIST = 'Login First'
 Global $LOGIN = "Login"
 Global $LOGOUT = "Logout"
+
+Global $SUNFROG_PNGS = ''

@@ -6,33 +6,51 @@ Func pngDesign()
 	  ; ko chon file
 	  return;
    ElseIf (@error = 0) then
-	  GUICtrlSetData($txtAreaPNG,$files)
+
+	  $SUNFROG_PNGS = pathFilesToArray($files)
+	  Local $list = ''
+
+	  If UBound($SUNFROG_PNGS) > 0 Then
+		 For $i=0 to UBound($SUNFROG_PNGS)-1
+			Local $file = $SUNFROG_PNGS[$i]
+			Local $arr = StringSplit($file,"\")
+			Local $fileName = $arr[$arr[0]]
+			$list &= $fileName&@CRLF
+		 Next
+	  Else
+		 Local $arr = StringSplit($files,"\")
+		 $list = $arr[$arr[0]]
+	  EndIf
+
+	  GUICtrlSetData($txtAreaPNG,$list)
    EndIf
 EndFunc
 
 Func sunfrogLogin()
+    Local $USER=  trim(GUICtrlRead($sunfrogUser))
+   Local $PASS= trim(GUICtrlRead($sunfrogPass))
+
+   if $PASS = '' OR  $USER = '' Then
+	   MsgBox($MB_ICONERROR+262144+8192,"Error", $LOGIN_FAIL)
+	   Return
+   EndIf
+
    GUICtrlSetState($sunfrogLogin, $GUI_DISABLE)
+
    If ($SUNFROG_SESSION_LOGIN = '') Then
-	  Local $USER= GUICtrlRead($sunfrogUser)
-	  Local $PASS= GUICtrlRead($sunfrogPass)
+
 
 	  $SUNFROG_SESSION_LOGIN = sunfrogProgressLogin($USER,$PASS)
 
 	  If $SUNFROG_SESSION_LOGIN = '' Then
 		 MsgBox($MB_ICONERROR+262144+8192,"Error", $LOGIN_FAIL)
-		 $IS_SUNFROG_LOGIN = False
+		 GUICtrlSetState($sunfrogLogin, $GUI_ENABLE)
 	  Else
-		 $IS_SUNFROG_LOGIN = True
-		 GUICtrlSetData($sunfrogLogin, $LOGOUT)
 	  Endif
-   Else
-	  $SUNFROG_SESSION_LOGIN = ''
-	  $IS_SUNFROG_LOGIN = False
-	  GUICtrlSetData($sunfrogLogin, $LOGIN)
+
    EndIf
 
-   GUICtrlSetState($sunfrogLogin, $GUI_ENABLE)
-  ; ConsoleWrite($SUNFROG_SESSION_LOGIN & " . " &  $IS_SUNFROG_LOGIN &@CRLF)
+
 
 EndFunc
 
@@ -50,23 +68,7 @@ Func uploadSunfrogCamp()
    Local $desc = trim(GUICtrlRead($descCamp))
    Local $category = GUICtrlRead($categoriesCampCombo)
 
-#comments-start
-   $chkGuysTee
-   $chkLadyTee
-   $chkHoodie
-   $chkSweat
-   $chkUniLSleeve
-   $chkColorMug
-
-   $chkGuysColor
-   $chkLadyColor
-   $chkHoodieColor
-   $chkSweatColor
-   $chkUniLSleeveColor
-#comments-end
-
-
-   Local $isDataValid = UtilsValidateCamp($pngPaths,$title,$desc,$category,$chkGuysTee,$chkLadyTee,$chkHoodie,$chkSweat,$chkUniLSleeve,$chkGuysColor,$chkLadyColor,$chkHoodieColor,$chkSweatColor,$chkUniLSleeveColor,$chkColoredMug)
+   Local $isDataValid = UtilsValidateSunfrogCamp($pngPaths,$title,$desc,$category,$chkGuysTee,$chkLadyTee,$chkHoodie,$chkSweat,$chkUniLSleeve,$chkGuysColor,$chkLadyColor,$chkHoodieColor,$chkSweatColor,$chkUniLSleeveColor,$chkColoredMug)
    If Not ($isDataValid = '') Then
 	  MsgBox($MB_ICONERROR+262144+8192,"Error", $isDataValid)
 	  Return
@@ -103,21 +105,19 @@ Func uploadSunfrogCamp()
    $sunfrogDataUpload = StringReplace($sunfrogDataUpload,  '#TYPES', $sunfrogTypesJSON)
    $sunfrogDataUpload = StringReplace($sunfrogDataUpload,  '#COLLECTION', $collection)
 
-   Local $pngs = pathFilesToArray($pngPaths)
    Local $sunfrogDataUploadFinal = ''
 
-   If (UBound($pngs) > 0) Then
+   If (UBound($SUNFROG_PNGS) > 0) Then
 	  ; >=2 files
-	  For $i=0 to UBound($pngs) - 1
-		 $sunfrogDataUploadFinal = dataUpload($sunfrogDataUpload, $pngs[$i] , $keyword , $title, $desc , $isBack)
+	  For $i=0 to UBound($SUNFROG_PNGS) - 1
+		 $sunfrogDataUploadFinal = dataUpload($sunfrogDataUpload, $SUNFROG_PNGS[$i] , $keyword , $title, $desc , $isBack)
 		 sleep(50)
-		 ;uploadSunfrogCampProgress($sunfrogDataUploadFinal)
-		 ;ConsoleWrite($sunfrogDataUploadFinal & @CRLF)
+		 uploadSunfrogCampProgress($sunfrogDataUploadFinal)
 	  Next
    Else
 	  ; 1 file PNG
 
-	  $sunfrogDataUploadFinal = dataUpload($sunfrogDataUpload, $pngs , $keyword , $title, $desc, $isBack)
+	  $sunfrogDataUploadFinal = dataUpload($sunfrogDataUpload, $SUNFROG_PNGS , $keyword , $title, $desc, $isBack)
 	  uploadSunfrogCampProgress($sunfrogDataUploadFinal)
 
 	 ;ConsoleWrite($sunfrogDataUploadFinal)
@@ -127,9 +127,12 @@ Func uploadSunfrogCamp()
 EndFunc
 
 Func uploadSunfrogCampProgress($sunfrogDataUploadFinal)
-  $h = FileOpen(@ScriptDir &'\data.txt',10)
-  FileWrite($h,$sunfrogDataUploadFinal)
-  FileClose($h)
+   #comments-start
+   $h = FileOpen(@ScriptDir &'\data.txt',9)
+   FileWrite($h,$sunfrogDataUploadFinal)
+   FileClose($h)
+   #comments-end
+
    _HttpRequest(2, $SUNFROG_UPLOAD_URL, $sunfrogDataUploadFinal, $SUNFROG_SESSION_LOGIN)
 EndFunc
 

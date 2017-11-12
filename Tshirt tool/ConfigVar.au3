@@ -39,12 +39,13 @@ Global $uniLSleeveColors = StrToArray($uniLSleeveColorsConfig)
 
 Global $categories = IniRead($configPath,"sunfrog","categories","")
 Global $collections = IniRead($collectionPath,"collection","collections","")
-Global $descWordLength = IniRead($configPath,"sunfrog","descWordLength","")
+Global $sunfrogDescWordLength = IniRead($configPath,"sunfrog","sunfrogDescWordLength","")
 
 Global $TITLE_DEFAULT = IniRead($configPath,"sunfrog","TITLE_DEFAULT","")
 Global $DESC_DEFAULT = IniRead($configPath,"sunfrog","DESC_DEFAULT","#KEY Apparel. Best Gifts For You.")
 
-Global $MAX_COLOR_PICK = 4
+Global $SUNFROG_MAX_COLOR_PICK = 3
+
 
 #comments-start
 Global $sunfrogCategories    = 'sunfrogCategories.txt'

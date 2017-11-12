@@ -22,8 +22,17 @@ Next
    return $result
 EndFunc
 
+Func fileNameFromPath($file)
+  Local $arr = StringSplit($file,"\")
+  Local $fileName = $arr[$arr[0]]
 
-Func UtilsValidateCamp($pngPaths,$title,$desc,$category,$chkGuysTee,$chkLadyTee,$chkHoodie,$chkSweat,$chkUniLSleeve,$chkGuysColor,$chkLadyColor,$chkHoodieColor,$chkSweatColor,$chkUniLSleeveColor,$chkColoredMug)
+  $fileName =  StringReplace($fileName," ","")
+  $fileName =  StringReplace($fileName,".png","")
+
+  Return upper1stLetter($fileName)
+EndFunc
+
+Func UtilsValidateSunfrogCamp($pngPaths,$title,$desc,$category,$chkGuysTee,$chkLadyTee,$chkHoodie,$chkSweat,$chkUniLSleeve,$chkGuysColor,$chkLadyColor,$chkHoodieColor,$chkSweatColor,$chkUniLSleeveColor,$chkColoredMug)
 
    Local $isPickApparel = false
 
@@ -71,8 +80,8 @@ Func UtilsValidateCamp($pngPaths,$title,$desc,$category,$chkGuysTee,$chkLadyTee,
 
 	  Local $words = StringSplit($desc," ")
 	  ConsoleWrite($words[0])
-	  If $words[0]> ($descWordLength + 1) Then
-		 Return 'Description Only Up To 30 words'
+	  If $words[0]> ($sunfrogDescWordLength + 1) Then
+		 Return 'Description max '& $sunfrogDescWordLength &' words'
 	  EndIf
    EndIf
 
@@ -92,7 +101,7 @@ Func validApparelColor($chk,$chkColor)
 			EndIf
 		 Next
 
-		 If ($num <= $MAX_COLOR_PICK) AND ($num > 0) Then
+		 If ($num <= $SUNFROG_MAX_COLOR_PICK) AND ($num > 0) Then
 			Return True
 		 EndIf
 
@@ -149,6 +158,7 @@ Func SunfrogImagesJSON($pngs)
 EndFunc
 
 func base64($png)
+
    $dat=FileRead(FileOpen($png,16))
    $objXML=ObjCreate("MSXML2.DOMDocument")
    $objNode=$objXML.createElement("b64")
@@ -182,15 +192,7 @@ Func SunfrogKeyWordsJSON($keyword, $png)
 EndFunc
 
 
-Func fileNameFromPath($file)
-  Local $arr = StringSplit($file,"\")
-  Local $fileName = $arr[$arr[0]]
 
-  $fileName =  StringReplace($fileName," ","")
-  $fileName =  StringReplace($fileName,".png","")
-
-  Return upper1stLetter($fileName)
-EndFunc
 
 Func SunfrogTitleJSON($title, $png)
 
@@ -243,7 +245,7 @@ Func SunfrogCategoryJSON($category)
 EndFunc
 
 Func msgValidateColorPick($txt)
-   return 'Choosen '&$txt&' Color (Max='&$MAX_COLOR_PICK&')'
+   return 'Choosen '&$txt&' Color (Max='&$SUNFROG_MAX_COLOR_PICK&')'
 EndFunc
 
 
