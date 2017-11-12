@@ -20,20 +20,39 @@ GLobal $ImgScreenX2 =   IniRead($configPath,"ImgScreen","ImgScreenX2","")
 GLobal $ImgScreenY2 =   IniRead($configPath,"ImgScreen","ImgScreenY2","")
 
 
-;------- tshirt -------
-Global $tshirtColors = IniRead($configPath,"sunfrog","tshirtColors","")
-Global $colors = StrToArray($tshirtColors)
+;------- sunfrog -------
+Global $SUNFROG_LOGIN_URL =  IniRead($configPath,"sunfrog","SUNFROG_URL","")
+Global $SUNFROG_UPLOAD_URL =  IniRead($configPath,"sunfrog","SUNFROG_UPLOAD_URL","")
+Global $SUNFROG_USER_DEFAULT =  IniRead($configPath,"sunfrog","SUNFROG_USER_DEFAULT","")
+
+Global $teeColorsConfig = IniRead($configPath,"sunfrog","teeColors","")
+Global $teeColors = StrToArray($teeColorsConfig)
+
+Global $hoodieColorsConfig = IniRead($configPath,"sunfrog","hoodieColors","")
+Global $hoodieColors = StrToArray($hoodieColorsConfig)
+
+Global $sweatColorsConfig = IniRead($configPath,"sunfrog","sweatColors","")
+Global $sweatColors = StrToArray($sweatColorsConfig)
+
+Global $uniLSleeveColorsConfig = IniRead($configPath,"sunfrog","uniLSleeveColors","")
+Global $uniLSleeveColors = StrToArray($uniLSleeveColorsConfig)
 
 Global $categories = IniRead($configPath,"sunfrog","categories","")
 Global $collections = IniRead($collectionPath,"collection","collections","")
-Global $descWordLength = IniRead($collectionPath,"sunfrog","descWordLength","")
+Global $descWordLength = IniRead($configPath,"sunfrog","descWordLength","")
 
+Global $TITLE_DEFAULT = IniRead($configPath,"sunfrog","TITLE_DEFAULT","")
+Global $DESC_DEFAULT = IniRead($configPath,"sunfrog","DESC_DEFAULT","#KEY Apparel. Best Gifts For You.")
+
+Global $MAX_COLOR_PICK = 4
 
 #comments-start
 Global $sunfrogCategories    = 'sunfrogCategories.txt'
 Global $sunfrogColorApparel   = 'sunfrogColorApparel.txt'
 Global $sunfrogTypeApparel    = 'sunfrogTypeApparel.txt'
 #comments-end
+
+Global $sunfrogCategoryDB =  IniRead($configPath,"sunfrog",'sunfrogCategoryDB',"")
 
 Global $sunfrogGuysTeePrice = IniRead($configPath,"sunfrog",'sunfrogGuysTeePrice',"19")
 Global $sunfrogLadyTeePrice = IniRead($configPath,"sunfrog",'sunfrogLadyTeePrice',"19")

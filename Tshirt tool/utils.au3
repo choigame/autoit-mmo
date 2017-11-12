@@ -31,7 +31,9 @@ Func trim($str)
    return StringStripWS($str, 3)
 EndFunc
 
-
+Func sysout($txt)
+   ConsoleWrite($txt & @CRLF)
+   EndFunc
 
 
 

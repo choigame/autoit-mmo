@@ -1,0 +1,25 @@
+HTTP/1.1 302 Found
+Cache-Control: no-cache
+Date: Sun, 12 Nov 2017 04:25:19 GMT
+Pragma: no-cache
+Transfer-Encoding: chunked
+Content-Type: text/html;charset=UTF-8
+Location: https://manager.sunfrogshirts.com/index.cfm?dashboard
+Server: Microsoft-IIS/8.5
+Set-Cookie: CFID=69827413; Expires=Mon, 13-Nov-2017 04:25:19 GMT; Path=/; HttpOnly
+Set-Cookie: CFTOKEN=adfca2b157e23686-D0BEB1E3-155D-158F-0E90243AED4E9F13; Expires=Mon, 13-Nov-2017 04:25:19 GMT; Path=/; HttpOnly
+Set-Cookie: BNI_OatmealRaisin=0000000000000000000000005a00560a00000000; Path=/; HttpOnly
+Vary: Accept-Encoding
+X-Powered-By: ASP.NET
+
+--- Login Fail ----
+HTTP/1.1 200 OK
+Date: Sun, 12 Nov 2017 04:26:19 GMT
+Transfer-Encoding: chunked
+Content-Type: text/html;charset=UTF-8
+Server: Microsoft-IIS/8.5
+Set-Cookie: CFID=69827670; Expires=Mon, 13-Nov-2017 04:26:20 GMT; Path=/; HttpOnly
+Set-Cookie: CFTOKEN=1f428a3e3e694065-D0C7EE12-155D-158F-0E28B312244FE065; Expires=Mon, 13-Nov-2017 04:26:20 GMT; Path=/; HttpOnly
+Set-Cookie: BNI_OatmealRaisin=0000000000000000000000005a00560a00000000; Path=/; HttpOnly
+Vary: Accept-Encoding
+X-Powered-By: ASP.NET

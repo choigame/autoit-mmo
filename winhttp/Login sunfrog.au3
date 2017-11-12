@@ -12,9 +12,9 @@ $cookieVisitPage = _GetCookie($data)
 
 ConsoleWrite("Cookie Viist Page = " & $cookieVisitPage)
 
-;$dataLogin = "username=dactandn%40gmail.com&password=handoi11&login=Login"
+$dataLogin = "username=dactandn%40gmail.com&password=handoi11&login=Login"
 $urlLogin = "https://manager.sunfrogshirts.com/"
-$referer = "https://manager.sunfrogshirts.com/"
+$referer  = "https://manager.sunfrogshirts.com/"
 
 $data = _HttpRequest(1, $urlLogin, $dataLogin, $cookieVisitPage, $referer)
 $cookieAfterLogin  = _GetCookie($data)
@@ -30,7 +30,7 @@ $data = _HttpRequest(2, $location, '', $cookieAfterLogin, $referer)
 $headerLocation = _HttpRequest(1, $location, '', $cookieAfterLogin, $referer)
 $cookieFinal  = _GetCookie($headerLocation)
 
-ConsoleWrite(@CRLF & "Cookie Final = " & $cookieFinal)
+ConsoleWrite(@CRLF & "Cookie Final = " & $cookieFinal &@CRLF)
 
 $output = @ScriptDir & '\output\login.' & @MSEC & '.html'
 FileWrite($output,$data)
@@ -55,7 +55,7 @@ Local $dataUpload = '{'      & _
 
 $output = @ScriptDir & '\output\data' & @MSEC & '.txt'
 FileWrite($output,$dataUpload)
-$out = _HttpRequest(2, $designURL, $dataUpload, $cookieFinal)
+;$out = _HttpRequest(2, $designURL, $dataUpload, $cookieFinal)
 
 
 func base64()
@@ -65,7 +65,7 @@ $objXML=ObjCreate("MSXML2.DOMDocument")
 $objNode=$objXML.createElement("b64")
 $objNode.dataType="bin.base64"
 $objNode.nodeTypedValue=$dat
-ConsoleWrite(StringLen($objNode.Text))
+
 
 local $out = StringRegExpReplace($objNode.Text,"\n","")
    return $out

@@ -1,4 +1,6 @@
 
+
+Global $SUNFROG_SESSION_LOGIN = ''
 Global $ComboBox_Changed = False
 Global $DebugIt = 1
 Global $changed = 0
@@ -15,4 +17,9 @@ Global $white = 0xFFFFFF
 Global $xanhLaChuoi = 0x55FFAA
 Global $index0Combo = "--------------"
 
-global $CHOOSE = 'Choose'
+Global $CHOOSE = 'Choose'
+Global $IS_SUNFROG_LOGIN = false
+global $LOGIN_FAIL = 'Login Fail'
+global $LOGIN_FIST = 'Login First'
+Global $LOGIN = "Login"
+Global $LOGOUT = "Logout"

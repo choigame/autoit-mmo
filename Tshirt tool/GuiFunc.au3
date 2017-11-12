@@ -4,7 +4,7 @@ Func _selectall()
     Switch $hWnd
         Case 0
 
-        Case $divHandle , $descriptionHandle
+        Case $divHandle , $descHandle
             _GUICtrlEdit_SetSel($hWnd, 0, -1)
             Return
     EndSwitch
@@ -12,6 +12,22 @@ Func _selectall()
     Send("^a")
     HotKeySet("^a", "_selectall")
  EndFunc   ;==>_selectall
+
+ Func WM_COMMAND($hWnd, $msg, $wParam, $lParam)
+    Local $nNotifyCode = BitShift($wParam, 16)
+    Local $nID = BitAND($wParam, 0x0000FFFF)
+    If $nID = $descCamp Then  ;the input control
+        If $nNotifyCode = $EN_UPDATE Then
+            If StringRight(GUICtrlRead($descCamp),2) = @CRLF Then
+                ;delete the return (also prevents the edit box from scrolling)
+                Send("{BS}")
+                ;Do something like move to the next control in zorder.
+                Send("{TAB}")
+            EndIf
+        EndIf
+    EndIf
+    Return $GUI_RUNDEFMSG
+EndFunc   ;==>WM_COMMAND
 
  Func _createButtonWithCursor($content,$x,$y,$w)
     $hand = GUICtrlCreateButton($content,$x,$y,$w,22)
@@ -44,6 +60,14 @@ EndFunc
 
 Func _createRequiredInputText($content,$x,$y,$w,$placeholder,$limit = 95)
    $hand = GUICtrlCreateInput($content,$x,$y,$w,23)
+   GUICtrlSetLimit(-1, $limit)
+   if Not($placeholder="" or $placeholder=null) Then GUICtrlSendMsg(-1, $EM_SETCUEBANNER, False, $placeholder)
+   _createLable("*",$x+$w+4,$y+7,$red)
+   return $hand
+EndFunc
+
+Func _createRequiredInputPass($content,$x,$y,$w,$placeholder,$limit = 20)
+   $hand = GUICtrlCreateInput($content,$x,$y,$w,23,$ES_PASSWORD)
    GUICtrlSetLimit(-1, $limit)
    if Not($placeholder="" or $placeholder=null) Then GUICtrlSendMsg(-1, $EM_SETCUEBANNER, False, $placeholder)
    _createLable("*",$x+$w+4,$y+7,$red)

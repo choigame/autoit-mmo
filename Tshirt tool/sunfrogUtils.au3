@@ -1,5 +1,5 @@
 #include <Array.au3>
-
+#include 'http\_HttpRequest.au3'
 
 Func StrToArray($Str)
    return StringSplit($Str,",")
@@ -50,11 +50,11 @@ Func UtilsValidateCamp($pngPaths,$title,$desc,$category,$chkGuysTee,$chkLadyTee,
    $isSweatColor = validApparelColor($chkSweat,$chkSweatColor)
    $isUniLSleeveColor = validApparelColor($chkUniLSleeve,$chkUniLSleeveColor)
 
-   if Not $isGuysColor then Return 'Choosen Guys Color'
-   if Not $isLadyColor then Return 'Choosen Lady Color'
-   if Not $isHoodieColor then Return 'Choosen Hoodie Color'
-   if Not $isSweatColor then Return 'Choosen Sweat Color'
-   if Not $isUniLSleeveColor then Return 'Choosen Unisex Sleeve Color'
+   if Not $isGuysColor then Return msgValidateColorPick('Guys')
+   if Not $isLadyColor then Return msgValidateColorPick('Lady')
+   if Not $isHoodieColor then Return  msgValidateColorPick('Hoodie')
+   if Not $isSweatColor then Return  msgValidateColorPick('Sweat')
+   if Not $isUniLSleeveColor then Return  msgValidateColorPick('UnisexSleeve')
 
    if $pngPaths = '' Then
 	  Return 'Choosen png'
@@ -67,9 +67,11 @@ Func UtilsValidateCamp($pngPaths,$title,$desc,$category,$chkGuysTee,$chkLadyTee,
    if $desc = '' Then
 	  Return 'Fill Description'
    Else
+	  $desc = StringRegExpReplace($desc, "\s{2,}"," ")
+
 	  Local $words = StringSplit($desc," ")
-	  ConsoleWrite($words)
-	  If $words > ($descWordLength + 1) Then
+	  ConsoleWrite($words[0])
+	  If $words[0]> ($descWordLength + 1) Then
 		 Return 'Description Only Up To 30 words'
 	  EndIf
    EndIf
@@ -82,16 +84,22 @@ Func UtilsValidateCamp($pngPaths,$title,$desc,$category,$chkGuysTee,$chkLadyTee,
 EndFunc
 
 Func validApparelColor($chk,$chkColor)
+	  Local $num = 0
       If (GUICtrlRead($chk) = 1) Then
 		 For $i = 0 To UBound($chkColor) - 1
-			if (GUICtrlRead($chkColor[$i]) = 1) Then Return true
+			If (GUICtrlRead($chkColor[$i]) = 1) Then
+			   $num = $num + 1
+			EndIf
 		 Next
-		 Return false
+
+		 If ($num <= $MAX_COLOR_PICK) AND ($num > 0) Then
+			Return True
+		 EndIf
+
+		 Return False
 	  Else
 		 Return true
 	  EndIf
-
-	  Return false
    EndFunc
 
 Func SunfrogTypesJSON($chkGuysTee,$chkLadyTee,$chkHoodie,$chkSweat,$chkUniLSleeve,$chkGuysColor,$chkLadyColor,$chkHoodieColor,$chkSweatColor,$chkUniLSleeveColor,$chkColoredMug)
@@ -195,6 +203,47 @@ Func SunfrogTitleJSON($title, $png)
 
    Return $r
 
+EndFunc
+
+
+Func sunfrogProgressLogin($USER, $PASS)
+
+   Local $data = _HttpRequest(1, $SUNFROG_LOGIN_URL) ; 1 = get Header, 2 = get code html
+   Local $cookieVisitPage = _GetCookie($data)
+
+   Local $dataLogin = "username="&_URIEncode($USER)&"&password="&$PASS&"&login=Login"
+
+   $data = _HttpRequest(1, $SUNFROG_LOGIN_URL, $dataLogin, $cookieVisitPage, $SUNFROG_LOGIN_URL)
+
+   If Not (StringInStr($data, 'index.cfm?dashboard')) Then
+	  Return ''
+   EndIf
+
+   $cookieAfterLogin  = _GetCookie($data)
+
+   Return $cookieAfterLogin
+
+  ; _HttpRequest(2, $SUNFROG_UPLOAD_URL, $dataUpload, $cookieFinal)
+
+EndFunc
+
+
+Func SunfrogCategoryJSON($category)
+   Local $categoryDB = @ScriptDir & $sunfrogCategoryDB
+   Local $db = FileRead($categoryDB)
+   Local $regex = '<option value="(.+)">'&$category
+   Local $out = StringRegExp($db , $regex , 3)
+
+   if @error = 0 Then
+		 return $out[0]
+	  Else
+		 sysout("error sunfrogUtils SunfrogCategoryJSON")
+		 return 82 ; hobby
+   Endif
+EndFunc
+
+Func msgValidateColorPick($txt)
+   return 'Choosen '&$txt&' Color (Max='&$MAX_COLOR_PICK&')'
 EndFunc
 
 
