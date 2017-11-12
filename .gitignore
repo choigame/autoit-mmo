@@ -1,0 +1,10 @@
+.metadata/**
+/.recommenders/
+
+taget/**
+mvnw.cmd
+mvnw
+.mvn
+.mvn/**
+.exe
+.ico
