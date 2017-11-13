@@ -10,7 +10,7 @@
 
 
 #include "ConfigVar.au3"
-#include "Func.au3"
+#include "UtilsFunc.au3"
 #include "sunfrogUtils.au3"
 #include "SunfrogFunc.au3"
 #include "GuiFunc.au3"
@@ -26,7 +26,8 @@ Local $hGUI = GUICreate($APPTITLE,$XGUI, $YGUI)
 GUISetOnEvent($GUI_EVENT_CLOSE, "ExitApp")
 
 Local $idFilemenu = GUICtrlCreateMenu("&File")
-Local $idFileitem = GUICtrlCreateMenuItem("Open", $idFilemenu)
+Local $idFileitem = GUICtrlCreateMenuItem("ScriptDir", $idFilemenu)
+GUICtrlSetOnEvent(-1, "openScriptDir")
 GUICtrlSetState(-1, $GUI_DEFBUTTON)
 Local $idHelpmenu = GUICtrlCreateMenu("?")
 GUICtrlCreateMenuItem("Save", $idFilemenu)
@@ -47,7 +48,7 @@ global $space = 100
 
 GUICtrlCreateTab(0, 5, $XGUI, $YGUI)
 
-GUICtrlCreateTabItem("Util")
+GUICtrlCreateTabItem("Utils")
 
 GUICtrlCreateLabel("Get Tags Teespring", $padSide , 5 + $YTAB, $XGUI)
 Local $div = GUICtrlCreateEdit("" , $padSide, 25 + $YTAB, $XGUI- 2*$padSide, $Y1 , $ES_AUTOVSCROLL + $WS_VSCROLL)
@@ -62,13 +63,21 @@ Local $chkTagsTeespring = _createCheckbox("Copy",60, $Y1 + 30 + $YTAB,50,25)
 Local $getBtn = _createButtonWithCursor("GET", $XGUI- 68, $Y1 + 30 + $YTAB, 65)
 GUICtrlSetOnEvent(-1, "GetTagsTeespring")
 ;---------
-Local $chkFilterEmailGoogle = _createCheckbox("Filter Emails Google: Ctrl+A. Ctrl+C. Shift+F để get mail",5,$Y1+60 + $YTAB,$XGUI- 2*$padSide)
+$Y2 = 0
+
+Local $chkFilterEmailGoogle = _createCheckbox("Lọc GG Emails: Ctrl+A. Ctrl+C. Shift+F để get mail.",5,$Y1 + 60 + $YTAB + $Y2, $XGUI- 2*$padSide)
 GUICtrlSetOnEvent(-1, "IsFilterEmailGoolge")
 
-Local $chkSaveImgFromScreen = _createCheckbox("Save Img From CBoard: Ctrl+C. Shift+C để save",5,$Y1+80+ $YTAB,$XGUI-15)
+Local $chkSaveImgFromScreen = _createCheckbox("Shift+C để chụp ảnh màn hình.",5, $Y1+80+ $YTAB + $Y2, $XGUI-15)
 GUICtrlSetOnEvent(-1, "isSaveImgFromScreen")
 
-;====================== TAB2 ==================================================================
+GUICtrlCreateLabel('Vào inbox GG mail. Bôi đen và Shirt+R để xóa bounce mail trong file.',5,  $Y1 + 105 + $YTAB + $Y2,$XGUI,20)
+Local $chooseListCampEMailBtn = _createButtonWithCursor ("Chọn file email chiến dịch", 3, $Y1 + 125 + $YTAB + $Y2, 135)
+GUICtrlSetOnEvent(-1, "chooseListCampEMail")
+Local $nameListCampEmailLbl = GUICtrlCreateLabel('',150,  $Y1 + 130 + $YTAB + $Y2,$XGUI,25)
+
+
+;====================== TAB2 Sunfrog ==================================================================
 GUICtrlCreateTabItem("Sunfrog")
 GUISetFont(8.5)
 Local $sunfrogUser =  _createRequiredInputText($SUNFROG_USER_DEFAULT, 5,  $YTAB + 5, 150,"Username", 50)

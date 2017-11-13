@@ -1,6 +1,7 @@
 #include "utils.au3"
 #include <GDIPlus.au3>
 #include <ScreenCapture.au3>
+#include <File.au3>
 
 Func GetTagsTeespring()
 
@@ -49,7 +50,7 @@ Func FilterEmailGoogle()
 		Return
 	EndIf
 
-	Local $PathFile = @ScriptDir & "\" & $ROOTMAIL & "\" & $key & ".csv"
+   Local $PathFile = @ScriptDir & "\" & $ROOTMAIL & "\" & $key & ".csv"
 
    Local $CSV = ""
    if Not FileExists($PathFile) Then
@@ -103,5 +104,86 @@ Func IsFilterEmailGoolge()
    FileMove($tempPath , $path , $FC_OVERWRITE + $FC_CREATEPATH)
 
 EndFunc
+
+Func chooseListCampEMail()
+  local $file = FileOpenDialog("CSV,TXT",@ScriptDir,"(*.csv;*.txt)|(*.xlsx)", $FD_FILEMUSTEXIST)
+
+   if (@error == 1) Then
+	  $ListCampEmail = ''
+	  HotKeySet("+r")
+	  GUICtrlSetData($nameListCampEmailLbl,"")
+	  return;
+
+   ElseIf (@error = 0) then
+
+	  $ListCampEmailPath = $file
+
+	  HotKeySet("+r","removeBounceMailListCampEmail")
+
+	  Local $name = getFileNameFromPath($file)
+
+	  GUICtrlSetData($nameListCampEmailLbl,$name)
+
+	  FileCopy($ListCampEmailPath,'BackUp_' &$name , 8)
+   EndIf
+EndFunc
+
+Func removeBounceMailListCampEmail()
+
+   if Not $ListCampEmailPath then
+		MsgBox($MB_ICONWARNING+262144+8192,"Error","Choose file first.")
+		return
+   EndIf
+
+   Local $input = trim(ClipGet())
+
+   if(StringLen($input)==0) then
+		MsgBox($MB_ICONWARNING+262144+8192,"Error","Copy carefully.")
+		return
+   EndIf
+
+   ;To: admon.anglo (2)
+   Local $FoundEmails = StringRegExp($input, 'To: (.+) \(2\)', 3)
+
+   If @error > 0 Then
+		MsgBox($MB_ICONERROR+262144+8192,"Error","Invalid Copy")
+		Return
+	 EndIf
+
+  For $j= 0 to UBound($FoundEmails) - 1
+	  For $i = 1 to _FileCountLines($ListCampEmailPath)
+		 If StringInStr(FileReadLine($ListCampEmailPath,$i), $FoundEmails[$j]) Then
+			_FileWriteToLine($ListCampEmailPath,$i, "", True)
+		 EndIf
+	  Next
+  Next
+
+#comments-start
+   Local $emailList = FileRead($hFile)
+
+   FileClose($hFile)
+   local $regex = ""
+   For $i= 0 to UBound($FoundEmails) - 1
+	   $regex = "^.*"&$FoundEmails[$i]&".*$"
+	  $emailList=StringRegExpReplace($emailList, $regex , "")
+	 Next
+
+   $emailList = StringRegExpReplace($emailList,"^\n","")
+
+   Local $PathOuputFile = StringReplace($ListCampEmailPath,".txt","")
+   $PathOuputFile = StringReplace($PathOuputFile,".csv","")
+   $PathOuputFile = StringReplace($PathOuputFile,".xlsx","")
+
+   Local $date = getDateTimeReport()
+   $PathOuputFile &= '_RemoveBounce_'& $date &'.csv'
+
+   Local $hOut = FileOpen($PathOuputFile,10)
+   FileWrite($hOut,$emailList)
+
+   FileClose($hOut)
+   #comments-end
+EndFunc
+
+
 
 

@@ -8,8 +8,11 @@ Global $APPTITLE = IniRead($configPath,"gui","APPTITLE","Tool 1.2")
 Global $XGUI = IniRead($configPath,"gui","XGUI","400")
 Global $YGUI = IniRead($configPath,"gui","YGUI","250")
 
-Global $ROOTMAIL = IniRead($configPath,"gui","ROOTMAIL","")
-Global $ROOTIMG = IniRead($configPath,"gui","ROOTIMG","")
+;file OUTPUT
+Global $ROOTMAIL = IniRead($configPath,"utils","ROOTMAIL","")
+Global $ROOTIMG = IniRead($configPath,"utils","ROOTIMG","")
+Global $ROOT_MAIL_REMOVE_BOUNCE = IniRead($configPath,"utils","ROOT_MAIL_REMOVE_BOUNCE","")
+
 
 Global $RegexTagsTeespring  = IniRead($configPath,"regex","RegexTagsTeespring","")
 Global $RegexEmail = IniRead($configPath,"regex","RegexEmail","")

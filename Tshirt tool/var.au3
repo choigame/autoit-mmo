@@ -17,6 +17,10 @@ Global $white = 0xFFFFFF
 Global $xanhLaChuoi = 0x55FFAA
 Global $index0Combo = "--------------"
 
+;utilsTab
+Global $ListCampEmailPath = ''
+
+;sunfrog
 Global $CHOOSE = 'Choose'
 global $LOGIN_FAIL = 'Login Fail'
 global $LOGIN_FIST = 'Login First'

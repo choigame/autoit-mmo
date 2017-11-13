@@ -35,5 +35,18 @@ Func sysout($txt)
    ConsoleWrite($txt & @CRLF)
    EndFunc
 
+Func getFileNameFromPath($file)
+   Local $arr = StringSplit($file,"\")
+		 return $arr[$arr[0]]
+	  EndFunc
 
+Func removeExtOfFile($file)
+   Local $PathOuputFile = StringReplace($file,".txt","")
+   $PathOuputFile = StringReplace($PathOuputFile,".csv","")
+   return StringReplace($PathOuputFile,".xlsx","")
+EndFunc
+
+Func getDateTimeReport()
+return @MDAY &"_"&@MON &"_"&@YEAR & "_" &@HOUR  &"_"& @MIN &"_"& @MSEC
+EndFunc
 

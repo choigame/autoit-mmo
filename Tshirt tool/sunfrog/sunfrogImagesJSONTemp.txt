@@ -1,1 +1,0 @@
-{"id":"__dataURI:0__","uri":"data:image/png;base64,#BASE64"}

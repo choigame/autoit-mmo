@@ -86,3 +86,9 @@ Func _createCheckbox($content,$x,$y,$w,$h=23)
    GUICtrlSetCursor(-1, 0)  ; hand
    return $hand
 EndFunc
+
+Func openScriptDir()
+
+Run("Explorer.exe " & @ScriptDir)
+EndFunc
+
