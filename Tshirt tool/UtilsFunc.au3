@@ -106,7 +106,7 @@ Func IsFilterEmailGoolge()
 EndFunc
 
 Func chooseListCampEMail()
-  local $file = FileOpenDialog("CSV,TXT",@ScriptDir,"(*.csv;*.txt)|(*.xlsx)", $FD_FILEMUSTEXIST)
+  local $file = FileOpenDialog("Campain List Of Mail", @ScriptDir & '\' ,"(*.csv;*.txt)|(*.xlsx)", $FD_FILEMUSTEXIST)
 
    if (@error == 1) Then
 	  $ListCampEmail = ''
@@ -124,7 +124,7 @@ Func chooseListCampEMail()
 
 	  GUICtrlSetData($nameListCampEmailLbl,$name)
 
-	  FileCopy($ListCampEmailPath,'BackUp_' &$name , 8)
+	  FileCopy($ListCampEmailPath,'BUp_' & getDateTimeReport() &$name , 8)
    EndIf
 EndFunc
 
@@ -143,46 +143,79 @@ Func removeBounceMailListCampEmail()
    EndIf
 
    ;To: admon.anglo (2)
-   Local $FoundEmails = StringRegExp($input, 'To: (.+) \(2\)', 3)
+   Local $BouncedEmails = StringRegExp($input, $RegexEmail, 3)
 
    If @error > 0 Then
 		MsgBox($MB_ICONERROR+262144+8192,"Error","Invalid Copy")
 		Return
 	 EndIf
 
-  For $j= 0 to UBound($FoundEmails) - 1
+   HotKeySet("+r")
+
+   Local $pathBounceMailFile = 'bounces_emails' & $BounceMailFileExt
+   Local $hBounceMailsFile = FileOpen( $pathBounceMailFile , 1 + 8)
+
+   For $j= 0 to UBound($BouncedEmails) - 1
 	  For $i = 1 to _FileCountLines($ListCampEmailPath)
-		 If StringInStr(FileReadLine($ListCampEmailPath,$i), $FoundEmails[$j]) Then
+		 local $bounceEmail = $BouncedEmails[$j]
+		 If StringInStr(FileReadLine($ListCampEmailPath,$i), $bounceEmail) Then
 			_FileWriteToLine($ListCampEmailPath,$i, "", True)
+			sleep(14)
+			FileWriteLine($hBounceMailsFile, $bounceEmail)
+
+			;Tim dc 1 cai la break cho nhanh. vi muc dich lay bouncemail. sau nay con filter voi file bounce_mail lan nua (dc AFK).
+			ExitLoop
 		 EndIf
 	  Next
-  Next
+   Next
 
-#comments-start
-   Local $emailList = FileRead($hFile)
+   FileClose($hBounceMailsFile)
+   HotKeySet("+r","removeBounceMailListCampEmail")
+   MsgBox($MB_ICONERROR+262144+8192,"Info", "Removing Bounced Emails Finish")
 
-   FileClose($hFile)
-   local $regex = ""
-   For $i= 0 to UBound($FoundEmails) - 1
-	   $regex = "^.*"&$FoundEmails[$i]&".*$"
-	  $emailList=StringRegExpReplace($emailList, $regex , "")
-	 Next
-
-   $emailList = StringRegExpReplace($emailList,"^\n","")
-
-   Local $PathOuputFile = StringReplace($ListCampEmailPath,".txt","")
-   $PathOuputFile = StringReplace($PathOuputFile,".csv","")
-   $PathOuputFile = StringReplace($PathOuputFile,".xlsx","")
-
-   Local $date = getDateTimeReport()
-   $PathOuputFile &= '_RemoveBounce_'& $date &'.csv'
-
-   Local $hOut = FileOpen($PathOuputFile,10)
-   FileWrite($hOut,$emailList)
-
-   FileClose($hOut)
-   #comments-end
 EndFunc
+
+Func filterBounceMail()
+   local $fileCampMail = FileOpenDialog("Campain List Of Mail", @ScriptDir & '\',"(*.csv;*.txt)|(*.xlsx)", $FD_FILEMUSTEXIST)
+
+   if (@error == 1) Then
+	  GUICtrlSetData($nameListCampEmailLbl , "")
+	  return;
+   EndIf
+
+   local $fileBouncemail = FileOpenDialog("Bounce Email File", @ScriptDir & '\',"(*"&$BounceMailFileExt&")", $FD_FILEMUSTEXIST)
+
+   if (@error == 1) Then
+	  GUICtrlSetData($nameBounceEmaiFilelLbl , "")
+	  return;
+   EndIf
+
+   Local $nameCampMailFile = getFileNameFromPath($fileCampMail)
+
+   GUICtrlSetData($nameListCampEmailLbl,$nameCampMailFile)
+
+   FileCopy($fileCampMail,'BUp_' & getDateTimeReport() &$nameCampMailFile , 8)
+
+   $name = getFileNameFromPath($fileBouncemail)
+   GUICtrlSetData($nameBounceEmaiFilelLbl , $name & "... Running")
+
+	For $i = 1 to _FileCountLines($fileBouncemail)
+		 local $bounceEmail = FileReadLine($fileBouncemail,$i)
+		 For $j= 1 to _FileCountLines($fileCampMail)
+			   If StringInStr(FileReadLine($fileCampMail,$j), $bounceEmail) Then
+			   _FileWriteToLine($fileCampMail,$j, "", True)
+			EndIf
+		 Next
+	  Next
+
+
+   $nameBounceEmaiFilelLbl=""
+   GUICtrlSetData($nameBounceEmaiFilelLbl , "")
+
+   MsgBox($MB_ICONERROR+262144+8192,"Info", "Removing Bounced Emails Finish")
+
+EndFunc
+
 
 
 

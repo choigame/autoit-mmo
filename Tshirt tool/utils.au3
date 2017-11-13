@@ -47,6 +47,6 @@ Func removeExtOfFile($file)
 EndFunc
 
 Func getDateTimeReport()
-return @MDAY &"_"&@MON &"_"&@YEAR & "_" &@HOUR  &"_"& @MIN &"_"& @MSEC
+return @MDAY &"_"&@MON &"_"&@YEAR & "_" &@HOUR  & @MIN & @MSEC
 EndFunc
 

@@ -12,7 +12,7 @@ Global $YGUI = IniRead($configPath,"gui","YGUI","250")
 Global $ROOTMAIL = IniRead($configPath,"utils","ROOTMAIL","")
 Global $ROOTIMG = IniRead($configPath,"utils","ROOTIMG","")
 Global $ROOT_MAIL_REMOVE_BOUNCE = IniRead($configPath,"utils","ROOT_MAIL_REMOVE_BOUNCE","")
-
+Global $BounceMailFileExt = IniRead($configPath,"utils","BounceMailFileExt","")
 
 Global $RegexTagsTeespring  = IniRead($configPath,"regex","RegexTagsTeespring","")
 Global $RegexEmail = IniRead($configPath,"regex","RegexEmail","")
@@ -21,6 +21,7 @@ GLobal $ImgScreenX1 =   IniRead($configPath,"ImgScreen","ImgScreenX1","")
 GLobal $ImgScreenY1 =   IniRead($configPath,"ImgScreen","ImgScreenY1","")
 GLobal $ImgScreenX2 =   IniRead($configPath,"ImgScreen","ImgScreenX2","")
 GLobal $ImgScreenY2 =   IniRead($configPath,"ImgScreen","ImgScreenY2","")
+
 
 
 ;------- sunfrog -------

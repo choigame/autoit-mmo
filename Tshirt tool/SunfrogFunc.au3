@@ -1,6 +1,6 @@
 
 Func pngDesign()
-   local $files = FileOpenDialog("PNGs",@ScriptDir,"Images (*.png)", $FD_FILEMUSTEXIST + $FD_MULTISELECT)
+   local $files = FileOpenDialog("PNGs", @ScriptDir & '\',"Images (*.png)", $FD_FILEMUSTEXIST + $FD_MULTISELECT)
 
    if (@error == 1) Then
 	  ; ko chon file

@@ -71,10 +71,15 @@ GUICtrlSetOnEvent(-1, "IsFilterEmailGoolge")
 Local $chkSaveImgFromScreen = _createCheckbox("Shift+C để chụp ảnh màn hình.",5, $Y1+80+ $YTAB + $Y2, $XGUI-15)
 GUICtrlSetOnEvent(-1, "isSaveImgFromScreen")
 
-GUICtrlCreateLabel('Vào inbox GG mail. Bôi đen và Shirt+R để xóa bounce mail trong file.',5,  $Y1 + 105 + $YTAB + $Y2,$XGUI,20)
+GUICtrlCreateLabel('Vào inbox GG mail. Bôi đen và Shirt+R để xóa sent-bounce-email trong file (nhớ Unique line trước).',5,  $Y1 + 105 + $YTAB + $Y2,$XGUI,20)
 Local $chooseListCampEMailBtn = _createButtonWithCursor ("Chọn file email chiến dịch", 3, $Y1 + 125 + $YTAB + $Y2, 135)
 GUICtrlSetOnEvent(-1, "chooseListCampEMail")
-Local $nameListCampEmailLbl = GUICtrlCreateLabel('',150,  $Y1 + 130 + $YTAB + $Y2,$XGUI,25)
+Local $nameListCampEmailLbl = GUICtrlCreateLabel('',152,  $Y1 + 130 + $YTAB + $Y2,$XGUI,25)
+
+Local $filterBounceMailBtn = _createButtonWithCursor ("Chọn bounced email file để lọc", 3, $Y1 + 150 + $YTAB + $Y2, 155)
+GUICtrlSetOnEvent(-1, "filterBounceMail")
+Local $nameBounceEmaiFilelLbl = GUICtrlCreateLabel('',165,  $Y1 + 160 + $YTAB + $Y2,$XGUI,25)
+
 
 
 ;====================== TAB2 Sunfrog ==================================================================
