@@ -14,6 +14,8 @@ Global $ROOTIMG = IniRead($configPath,"utils","ROOTIMG","")
 Global $ROOT_MAIL_REMOVE_BOUNCE = IniRead($configPath,"utils","ROOT_MAIL_REMOVE_BOUNCE","")
 Global $BounceMailFileExt = IniRead($configPath,"utils","BounceMailFileExt","")
 
+GLobal $PNG_DESIGN_DIR =  IniRead($configPath,"utils","PNG_DESIGN_DIR","")
+
 Global $RegexTagsTeespring  = IniRead($configPath,"regex","RegexTagsTeespring","")
 Global $RegexEmail = IniRead($configPath,"regex","RegexEmail","")
 

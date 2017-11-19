@@ -26,7 +26,6 @@ Func fileNameFromPath($file)
   Local $arr = StringSplit($file,"\")
   Local $fileName = $arr[$arr[0]]
 
-  $fileName =  StringReplace($fileName," ","")
   $fileName =  StringReplace($fileName,".png","")
 
   Return upper1stLetter($fileName)
@@ -127,7 +126,7 @@ Func SunfrogTypesJSON($chkGuysTee,$chkLadyTee,$chkHoodie,$chkSweat,$chkUniLSleev
 EndFunc
 
 Func teesType($chkTee,$chkColor,$TYPE)
-
+    ; {"id":8,"name":"Guys Tee","price":19,"colors":["Black","Navy Blue"]}
    if GUICtrlRead($chkTee) = 1 Then
 	  Local $htemp = @ScriptDir &$sunfrogTypeJSONTemp
 	  local $temp = FileRead($htemp)
@@ -145,7 +144,7 @@ Func teesType($chkTee,$chkColor,$TYPE)
 	  $temp = StringReplace($temp,"#COLORS" , StringTrimLeft($colors,1))
 	  return "," & $temp
    EndIf
-   ; {"id":8,"name":"Guys Tee","price":19,"colors":["Black","Navy Blue"]}
+
    Return ''
 EndFunc
 
@@ -173,6 +172,7 @@ Func SunfrogKeyWordsJSON($keyword, $png)
 
    Local $r = ""
    Local $fileName = fileNameFromPath($png)
+   $fileName =  StringReplace($fileName," ","")
 
    If $keyword = '' Then
 	  $r = quote($fileName)

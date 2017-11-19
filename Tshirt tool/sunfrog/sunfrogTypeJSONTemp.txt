@@ -1,0 +1,1 @@
+{"id":#ID,"name":"#NAME","price":#PRICE,"colors":[#COLORS]}
