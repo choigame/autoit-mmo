@@ -1,9 +1,13 @@
 
 
 Global $SUNFROG_SESSION_LOGIN = ''
+
 Global $ComboBox_Changed = False
 Global $DebugIt = 1
 Global $changed = 0
+
+;SPY
+Global $cookieForCollection = ''
 
 
 ;color

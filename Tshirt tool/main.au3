@@ -8,14 +8,15 @@
 #include <GUIEdit.au3>
 #include <WinAPI.au3>
 
-
+#include 'http\_HttpRequest.au3'
 #include "ConfigVar.au3"
 #include "UtilsFunc.au3"
-#include "sunfrogUtils.au3"
-#include "SunfrogFunc.au3"
+#include "sunfrog_code\sunfrogUtils.au3"
+#include "sunfrog_code\SunfrogUploadFunc.au3"
+#include "sunfrog_code\sunfrogObj.au3"
+#include "sunfrog_code\SunfrogSpyFunc.au3"
 #include "GuiFunc.au3"
 #include "var.au3"
-#include "sunfrogObj.au3"
 
 HotKeySet("^a", "_selectall")
 
@@ -39,7 +40,7 @@ Local $idRecentfilesmenu = GUICtrlCreateMenu("Recent Files", $idFilemenu, 1)
 GUICtrlCreateMenuItem("", $idFilemenu, 2) ; create a separator line
 
 ;-----------
-Global $Y1 = $YGUI/4
+Global $Y1 = $YGUI/7
 Global $YTAB = 25
 global $padSide = 5
 global $k = 18
@@ -50,7 +51,7 @@ GUICtrlCreateTab(0, 5, $XGUI, $YGUI)
 
 GUICtrlCreateTabItem("Utils")
 
-GUICtrlCreateLabel("Get Tags Teespring", $padSide , 5 + $YTAB, $XGUI)
+GUICtrlCreateLabel("Get Tags Teespring Or Making Hashtags", $padSide , 10 + $YTAB, $XGUI)
 Local $div = GUICtrlCreateEdit("" , $padSide, 25 + $YTAB, $XGUI- 2*$padSide, $Y1 , $ES_AUTOVSCROLL + $WS_VSCROLL)
 $divHandle = GUICtrlGetHandle($div)
 
@@ -60,16 +61,23 @@ GUICtrlSetFont($combox,11)
 
 Local $chkTagsTeespring = _createCheckbox("Copy",60, $Y1 + 30 + $YTAB,50,25)
 
-Local $getBtn = _createButtonWithCursor("GET", $XGUI- 68, $Y1 + 30 + $YTAB, 65)
+Local $getTagsTeespringBtn = _createButtonWithCursor("Get Tags teespring", $XGUI- 240, $Y1 + 30 + $YTAB, 125)
 GUICtrlSetOnEvent(-1, "GetTagsTeespring")
+
+Local $maketHashTagsBtn = _createButtonWithCursor("Make Hashtags", $XGUI- 105, $Y1 + 30 + $YTAB, 100)
+GUICtrlSetOnEvent(-1, "MakeHashTags")
 ;---------
 $Y2 = 0
 
+Local $chkSaveImgFromScreen = _createCheckbox("Shift+C để chụp ảnh màn hình.",5, $Y1+60+ $YTAB + $Y2,170)
+GUICtrlSetOnEvent(-1, "isSaveImgFromScreen")
+
+Local $NicheCaptureImg =  _createRequiredInputText("", 180, $Y1+60+ $YTAB + $Y2, 160,"Niche", 60)
+
+#comments-start
+
 Local $chkFilterEmailGoogle = _createCheckbox("Lọc GG Emails: Ctrl+A. Ctrl+C. Shift+F để get mail.",5,$Y1 + 60 + $YTAB + $Y2, $XGUI- 2*$padSide)
 GUICtrlSetOnEvent(-1, "IsFilterEmailGoolge")
-
-Local $chkSaveImgFromScreen = _createCheckbox("Shift+C để chụp ảnh màn hình.",5, $Y1+80+ $YTAB + $Y2, $XGUI-15)
-GUICtrlSetOnEvent(-1, "isSaveImgFromScreen")
 
 GUICtrlCreateLabel('Vào inbox GG mail. Bôi đen và Shirt+R để xóa sent-bounce-email trong file (nhớ Unique line trước).',5,  $Y1 + 105 + $YTAB + $Y2,$XGUI,20)
 Local $chooseListCampEMailBtn = _createButtonWithCursor ("Chọn file email chiến dịch", 3, $Y1 + 125 + $YTAB + $Y2, 135)
@@ -80,7 +88,7 @@ Local $filterBounceMailBtn = _createButtonWithCursor ("Chọn bounced email file
 GUICtrlSetOnEvent(-1, "filterBounceMail")
 Local $nameBounceEmaiFilelLbl = GUICtrlCreateLabel('',165,  $Y1 + 160 + $YTAB + $Y2,$XGUI,25)
 
-
+#comments-end
 
 ;====================== TAB2 Sunfrog ==================================================================
 GUICtrlCreateTabItem("Sunfrog")
@@ -165,6 +173,34 @@ Next
 
 Local $sunfrogUploadCampBtn = _createButtonWithCursor("Upload", 580,$BeginSunforData + $YTAB + 125, 56)
 GUICtrlSetOnEvent(-1, "uploadSunfrogCamp")
+
+;----------TAB3----------
+GUICtrlCreateTabItem("Sunfrog Spy")
+GUISetFont(8.5)
+Local $sunfrogKeyword =  _createRequiredInputText("", 5,  $YTAB + 5, 150,"Keyword", 25)
+Local $sunfrogOffsetFrom =  _createRequiredInputText("", 175,  $YTAB + 5, 60,"PageFrom", 20)
+Local $sunfrogOffsetTo =  _createRequiredInputText("", 255,  $YTAB + 5, 60,"PageTo", 20)
+Local $sunfrogfilter =  _createComboBoxWithCursor("sales", 345,  $YTAB + 5, 80, 20)
+GUICtrlSetFont(-1, 9.5)
+GUICtrlSetData(-1, "new|popular|relevance", "new")
+;Local $sunfrogCollectionID =  _createRequiredInputText("168608", 5,  $YTAB + 35, 110,"Collection ID", 20)
+;GUICtrlCreateLabel("Để trống thì chỉ có SPY",140,  $YTAB + 35,110,40)
+Local $spySunfrogBtn = _createButtonWithCursor("Spy", 435,  $YTAB + 5, 50)
+GUICtrlSetOnEvent($spySunfrogBtn, "spySunfrog")
+
+GUICtrlCreateLabel("Copy collection",5,  $YTAB + 35,80,40)
+Local $copyCollectionHelpBtn = _createButtonWithCursor("?", 80,  $YTAB + 30, 30)
+GUICtrlSetOnEvent($copyCollectionHelpBtn, "copyCollectionHelp")
+
+Local $sunfrogCollectionItems =  _createRequiredEdit("", 5,  $YTAB + 55, 300,100,5000)
+$sunfrogCollectionItemsHandle = GUICtrlGetHandle($sunfrogCollectionItems)
+Local $sunfrogCollectionItemsFilter =  _createRequiredEdit("", 325,  $YTAB + 55, 300,100,5000)
+$sunfrogCollectionItemsFilterHandle = GUICtrlGetHandle($sunfrogCollectionItemsFilter)
+Local $sunfrogCollectionFilterBtn = _createButtonWithCursor("Get", 4,  $YTAB + 155, 50)
+GUICtrlSetOnEvent(-1, "copyCollection")
+
+
+
 
 GUICtrlCreateTabItem("") ; end tabitem definition
 

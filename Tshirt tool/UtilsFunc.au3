@@ -5,15 +5,10 @@
 
 Func GetTagsTeespring()
 
-Local $idInfoitem = GUICtrlCreateMenuItem("Info", $idHelpmenu)
-Local $idExititem = GUICtrlCreateMenuItem("Exit", $idFilemenu)
-Local $idRecentfilesmenu = GUICtrlCreateMenu("Recent Files", $idFilemenu, 1)
-
-GUICtrlCreateMenuItem("", $idFilemenu, 2) ; create a separator line
-   Local $input = GUICtrlRead($div)
+   Local $input = trim(GUICtrlRead($div))
    Local $determite = GUICtrlRead($combox)
 
-    Local $isCopy = GUICtrlRead($chkTagsTeespring)
+   Local $isCopy = GUICtrlRead($chkTagsTeespring)
 
    $input = StringRegExpReplace($input , '\s{2,}' , ' ')
    $input = StringRegExpReplace($input , $RegexTagsTeespring , '')
@@ -26,6 +21,78 @@ GUICtrlCreateMenuItem("", $idFilemenu, 2) ; create a separator line
 
    GUICtrlSetData($div,$input)
 EndFunc
+
+Func MakeHashTags()
+
+   Local $isCopy = GUICtrlRead($chkTagsTeespring)
+
+   Local $output
+   Local $input = trim(GUICtrlRead($div))
+   $input = StringRegExpReplace($input, '\s{1,}' , '')
+   $input = StringLower($input)
+
+   If StringInStr($input,"|") Then
+	  $output = makeHashTagWithDetermite($input, "|")
+   ElseIf StringInStr($input,",") Then
+	  $output = makeHashTagWithDetermite($input, ",")
+   Else
+	  MsgBox($MB_ICONERROR+262144+8192,"Error","Invalid Input Determite")
+   EndIf
+
+    if $isCopy == 1 then ClipPut($output)
+
+   GUICtrlSetData($div, $output)
+
+EndFunc
+
+Func makeHashTagWithDetermite($input, $determite)
+   Local $output
+   Local $array = StringSplit($input, $determite)
+
+   For $i=1 To $array[0]
+	  Local $hashTag = $array[$i]
+	  $output &=  "#" & $hashTag & " "
+   Next
+
+   Return trim($output)
+EndFunc
+
+
+ Func IsSaveImgFromScreen()
+
+	Local $check = GUICtrlRead($chkSaveImgFromScreen)
+	if $check==1 Then
+		HotKeySet("+c","SaveImgFromScreen")
+	Else
+		HotKeySet("+c")
+	EndIf
+ EndFunc
+
+
+ Func SaveImgFromScreen()
+   Local $niche = trim(GUICtrlRead($NicheCaptureImg))
+   If $niche = '' Then
+	  MsgBox($MB_ICONERROR+262144+8192,"Error","Invalid Niche Input")
+	  Return
+   EndIf
+
+
+   Local $fileName = $niche &  "_" & TimerInit() & ".jpg"
+   Local $path = @ScriptDir  & "\" &  $ROOTIMG & "\" & $niche & "\" &$fileName
+
+   Local $tempPath = @MyDocumentsDir & "\" & $fileName
+
+   Local $Xcenter = @DesktopWidth/2
+   Local $Ycenter = @DesktopHeight/2
+
+   Local $save = _ScreenCapture_Capture("", $ImgScreenX1, $ImgScreenY1, $ImgScreenX2, $ImgScreenY2)
+    _ScreenCapture_SaveImage($tempPath, $save)
+
+   FileMove($tempPath , $path , $FC_OVERWRITE + $FC_CREATEPATH)
+
+EndFunc
+
+
 
 Func FilterEmailGoogle()
 
@@ -78,32 +145,7 @@ Func IsFilterEmailGoolge()
 	EndIf
  EndFunc
 
- Func IsSaveImgFromScreen()
 
-	Local $check = GUICtrlRead($chkSaveImgFromScreen)
-	if $check==1 Then
-		HotKeySet("+c","SaveImgFromScreen")
-	Else
-		HotKeySet("+c")
-	EndIf
- EndFunc
-
-
- Func SaveImgFromScreen()
-   Local $fileName = TimerInit() & "_Screen_Img.jpg"
-   Local $path = @ScriptDir  & "\" &  $ROOTIMG & "\" & $fileName
-
-   Local $tempPath = @MyDocumentsDir & "\" & $fileName
-
-   Local $Xcenter = @DesktopWidth/2
-   Local $Ycenter = @DesktopHeight/2
-
-   Local $save = _ScreenCapture_Capture("", $ImgScreenX1, $ImgScreenY1, $ImgScreenX2, $ImgScreenY2)
-    _ScreenCapture_SaveImage($tempPath, $save)
-
-   FileMove($tempPath , $path , $FC_OVERWRITE + $FC_CREATEPATH)
-
-EndFunc
 
 Func chooseListCampEMail()
   local $file = FileOpenDialog("Campain List Of Mail", @ScriptDir & '\' ,"(*.csv;*.txt)|(*.xlsx)", $FD_FILEMUSTEXIST)

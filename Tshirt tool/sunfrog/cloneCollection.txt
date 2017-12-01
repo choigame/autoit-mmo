@@ -1,0 +1,14 @@
+function getListFrontThumbHref() {
+var v_lst_result = [];
+var v_lst_divFrontThumb = $('.frontThumb');
+for (var i = 0; i < v_lst_divFrontThumb.length; i++) {
+var v_divFrontThumb = v_lst_divFrontThumb[i];
+
+var itemID = $(v_divFrontThumb).find('a:first').attr('href');
+var itemAdd = itemID;
+v_lst_result.push(itemAdd);
+}
+return v_lst_result;
+}
+
+getListFrontThumbHref();

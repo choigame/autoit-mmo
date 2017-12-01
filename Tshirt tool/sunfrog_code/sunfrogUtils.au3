@@ -1,5 +1,4 @@
 #include <Array.au3>
-#include 'http\_HttpRequest.au3'
 
 Func StrToArray($Str)
    return StringSplit($Str,",")

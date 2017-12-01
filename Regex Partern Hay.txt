@@ -1,2 +1,10 @@
 Xoa blank line : ^\r
 Email : ([a-z0-9_.-]+@[a-z0-9_.-]+[a-z])
+
+email -> email,nameOfemail
+(.+)@(.*)
+\1@\2,\1,
+
+^(?!.*@).*
+labourcell@bkmea.com,labourcell
+labrador  --> Match

@@ -4,7 +4,7 @@ Func _selectall()
     Switch $hWnd
         Case 0
 
-        Case $divHandle , $descHandle
+        Case $divHandle , $descHandle, $sunfrogCollectionItemsHandle,$sunfrogCollectionItemsFilterHandle
             _GUICtrlEdit_SetSel($hWnd, 0, -1)
             Return
     EndSwitch
@@ -91,4 +91,13 @@ Func openScriptDir()
 
 Run("Explorer.exe " & @ScriptDir)
 EndFunc
+
+Func setEnable($hand)
+   GUICtrlSetState($hand, $GUI_ENABLE)
+EndFunc
+
+Func setDisable($hand)
+   GUICtrlSetState($hand, $GUI_DISABLE)
+EndFunc
+
 

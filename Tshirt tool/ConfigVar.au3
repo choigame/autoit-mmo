@@ -27,6 +27,8 @@ GLobal $ImgScreenY2 =   IniRead($configPath,"ImgScreen","ImgScreenY2","")
 
 
 ;------- sunfrog -------
+Global $SUNFROG_SPY_URL =  IniRead($configPath,"sunfrog","SUNFROG_SPY_URL","")
+
 Global $SUNFROG_LOGIN_URL =  IniRead($configPath,"sunfrog","SUNFROG_URL","")
 Global $SUNFROG_UPLOAD_URL =  IniRead($configPath,"sunfrog","SUNFROG_UPLOAD_URL","")
 Global $SUNFROG_USER_DEFAULT =  IniRead($configPath,"sunfrog","SUNFROG_USER_DEFAULT","")
@@ -74,4 +76,7 @@ Global $sunfrogImagesJSONTemp  = IniRead($configPath,"sunfrog",'sunfrogImagesJSO
 
 Global $sunfrogImageFrontJSONTemp = IniRead($configPath,"sunfrog",'sunfrogImageFrontJSONTemp',"")
 Global $sunfrogImageBackJSONTemp = IniRead($configPath,"sunfrog",'sunfrogImageBackJSONTemp',"")
+
+Global $sunfrogCloneCollection = IniRead($configPath,"sunfrog",'sunfrogCloneCollection',"")
+
 

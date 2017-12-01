@@ -50,3 +50,29 @@ Func getDateTimeReport()
 return @MDAY &"_"&@MON &"_"&@YEAR & "_" &@HOUR  & @MIN & @MSEC
 EndFunc
 
+Func isDigist($val, $message)
+   Local $str = "0123456789"
+   Local $a[StringLen($val)]
+   for $i=0 to StringLen($val)-1
+	  $a[$i]= StringMid($val, $i+1, 1)
+	  if Not StringInStr($str,$a[$i]) then
+		 MsgBox($MB_ICONERROR+262144+8192,"Error",$message&"  0-9")
+		 return false
+	  EndIf
+	  Next
+	  return true
+   EndFunc
+
+   Func isCharAndDigit($val,$message)
+   Local $str = "qwertyuiopasdfghjklzxcvbnm 1234567890"
+   Local $a[StringLen($val)]
+   for $i=0 to StringLen($val)-1
+	  $a[$i]= StringMid($val, $i+1, 1)
+	  if Not StringInStr($str,$a[$i]) then
+		 MsgBox($MB_ICONERROR+262144+8192,"Error",$message&" a-Z, 0-9 and space")
+		 return false
+	  EndIf
+	  Next
+	  return true
+   EndFunc
+
